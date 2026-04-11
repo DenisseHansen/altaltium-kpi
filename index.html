@@ -3,684 +3,1082 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>KPI Dashboard — Altaltium Real Estate Solutions</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Altaltium · KPI 03–10 Abr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--black:#0A0A0A;--teal:#52BEC0;--td:#0F6E56;--tl:#E1F5EE;--w:#fff;
-  --g4:#888780;--g5:#3B3B3B;--blue:#185FA5;--amber:#BA7517;--red:#A32D2D;--green:#0F6E56;}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'DM Sans',sans-serif;background:var(--black);color:#fff;min-height:100vh;}
-
-.hdr{background:var(--black);border-bottom:1px solid #1e1e1e;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;}
-.hdr-l .t1{font-size:17px;font-weight:600;}.hdr-l .t2{font-size:10px;color:var(--teal);letter-spacing:2px;text-transform:uppercase;margin-top:1px;}
-.hdr-r{text-align:right;}.hdr-r .p1{font-size:10px;color:var(--g4);letter-spacing:1px;text-transform:uppercase;}
-.hdr-r .p2{font-size:12px;font-weight:500;color:var(--teal);font-family:'DM Mono',monospace;}
-
-.wrap{max-width:1240px;margin:0 auto;padding:1.5rem 2rem;}
-
-.fbar{display:flex;gap:6px;margin-bottom:1.5rem;flex-wrap:wrap;align-items:center;}
-.flbl{font-size:10px;color:var(--g4);letter-spacing:1px;text-transform:uppercase;margin-right:3px;}
-.btn{padding:5px 14px;border-radius:6px;border:1px solid #2a2a2a;background:transparent;color:var(--g4);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;}
-.btn:hover{border-color:var(--teal);color:var(--teal);}
-.btn.act{background:var(--teal);border-color:var(--teal);color:#000;}
-.btn.bv1.act{background:#52BEC0;border-color:#52BEC0;color:#000;}
-.btn.bv2.act{background:#185FA5;border-color:#185FA5;color:#fff;}
-.btn.bv3.act{background:#555;border-color:#555;color:#fff;}
-.btn.bv4.act{background:#BA7517;border-color:#BA7517;color:#fff;}
-.sel{padding:5px 10px;border-radius:6px;border:1px solid #2a2a2a;background:#111;color:var(--g4);font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;min-width:215px;}
-.sel:focus{outline:none;border-color:var(--teal);color:#fff;} .sel option{background:#111;}
-
-.sec{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--g4);margin-bottom:.8rem;padding-bottom:6px;border-bottom:1px solid #1e1e1e;}
-
-/* KPI cards */
-.krow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-bottom:1.5rem;}
-.k{background:#111;border:1px solid #1e1e1e;border-radius:9px;padding:.85rem 1rem;}
-.kl{font-size:10px;color:var(--g4);letter-spacing:.8px;text-transform:uppercase;margin-bottom:4px;}
-.kv{font-size:25px;font-weight:600;font-family:'DM Mono',monospace;line-height:1;margin-bottom:3px;}
-.ks{font-size:10px;color:var(--g4);}
-.ct .kv{color:var(--teal);} .cg .kv{color:#4ade80;} .ca .kv{color:var(--amber);}
-.cz .kv{color:#2a2a2a;} .cr .kv{color:#f87171;}
-
-/* Funnel */
-.fn{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;margin-bottom:1.5rem;}
-.fs{background:#111;border:1px solid #1e1e1e;padding:1rem .85rem;position:relative;}
-.fs:first-child{border-radius:9px 0 0 9px;} .fs:last-child{border-radius:0 9px 9px 0;}
-.fs+.fs{border-left:none;}
-.fl{font-size:9px;color:var(--g4);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
-.fv{font-size:28px;font-weight:600;font-family:'DM Mono',monospace;line-height:1;margin-bottom:3px;}
-.fc{font-size:10px;font-weight:500;}
-.fct{color:var(--teal);} .fcn{color:var(--g4);} .fcw{color:#facc15;} .fcz{color:#252525;}
-.fa{position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:#252525;font-size:16px;z-index:2;}
-
-/* Gerencia cards */
-.gg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;margin-bottom:1.5rem;}
-.gc{background:#111;border:1px solid #1e1e1e;border-radius:10px;overflow:hidden;}
-.gch{padding:.8rem 1rem;display:flex;justify-content:space-between;align-items:flex-start;}
-.gn{font-size:13px;font-weight:600;} .gge{font-size:10px;opacity:.55;margin-top:1px;}
-.gbdg{font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 6px;border-radius:4px;font-family:'DM Mono',monospace;}
-.gcb{padding:.7rem 1rem;}
-.gr{display:flex;justify-content:space-between;align-items:baseline;padding:4px 0;border-bottom:1px solid #161616;font-size:12px;}
-.gr:last-child{border-bottom:none;}
-.gm{color:var(--g4);font-size:11px;} .gv{font-weight:600;font-family:'DM Mono',monospace;}
-.gt{font-size:10px;color:var(--teal);margin-left:4px;}
-.gw{font-size:10px;color:#facc15;margin-left:4px;}
-.grr{font-size:10px;color:#f87171;margin-left:4px;}
-
-/* Table */
-.tw{background:#111;border:1px solid #1e1e1e;border-radius:10px;overflow:hidden;margin-bottom:1.5rem;}
-table{width:100%;border-collapse:collapse;font-size:12px;}
-thead tr{background:#0d0d0d;}
-th{padding:8px 12px;text-align:left;font-size:9px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--g4);border-bottom:1px solid #1e1e1e;}
-td{padding:8px 12px;border-bottom:1px solid #161616;vertical-align:middle;}
-tr:last-child td{border-bottom:none;} tr:hover td{background:#141414;}
-.an{font-weight:500;}
-.gb{display:inline-block;padding:2px 6px;border-radius:4px;font-size:9px;font-weight:700;font-family:'DM Mono',monospace;}
-.gv1{background:rgba(82,190,192,.1);color:var(--teal);}
-.gv2{background:rgba(24,95,165,.15);color:#5BA3D9;}
-.gv3{background:rgba(59,59,59,.4);color:#aaa;}
-.gv4{background:rgba(186,117,23,.15);color:var(--amber);}
-.gdir{background:rgba(186,117,23,.15);color:var(--amber);}
-.gmkt{background:rgba(136,135,128,.15);color:#888;}
-.nr{font-family:'DM Mono',monospace;font-weight:500;text-align:right;}
-.pi{display:inline-block;padding:2px 6px;border-radius:4px;font-size:9px;font-family:'DM Mono',monospace;font-weight:600;}
-.pg{background:rgba(82,190,192,.1);color:var(--teal);}
-.pm{background:rgba(186,117,23,.1);color:var(--amber);}
-.pr{background:rgba(243,68,68,.1);color:#f87171;}
-.pz{color:#2a2a2a;}
-.cs{color:#4ade80;font-weight:600;} .cn{color:#f87171;font-weight:600;}
-
-/* Bar chart */
-.cc{background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:1.2rem;margin-bottom:1.5rem;}
-.ct2{font-size:10px;color:var(--g4);letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem;}
-.brow{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
-.bnm{width:170px;font-size:11px;color:#ccc;text-align:right;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.btr{flex:1;background:#1a1a1a;border-radius:4px;height:18px;position:relative;overflow:hidden;}
-.bfl{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:7px;transition:width .5s;}
-.bval{font-size:10px;font-family:'DM Mono',monospace;font-weight:600;color:rgba(0,0,0,.75);}
-.bvout{font-size:10px;font-family:'DM Mono',monospace;font-weight:500;color:#555;position:absolute;right:5px;top:50%;transform:translateY(-50%);}
-
-/* Alerts */
-.alert{background:#111;border:1px solid #2a1f1f;border-left:3px solid #f87171;border-radius:0 8px 8px 0;padding:.8rem 1rem;margin-bottom:1.25rem;font-size:12px;color:#999;line-height:1.6;}
-.alert strong{color:#f87171;}
-.info{background:#111;border:1px solid #1a2535;border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:.8rem 1rem;margin-bottom:1.25rem;font-size:12px;color:#999;line-height:1.6;}
-.info strong{color:var(--teal);}
-
-.view{display:none;} .view.act{display:block;}
-
-.ftr{background:var(--teal);padding:.8rem 2rem;display:flex;justify-content:space-between;align-items:center;}
-.fb{font-size:12px;font-weight:600;color:#000;letter-spacing:1px;} .ft{font-size:10px;color:rgba(0,0,0,.5);}
-
-@media(max-width:900px){.krow{grid-template-columns:repeat(3,minmax(0,1fr));}.fn{grid-template-columns:repeat(3,minmax(0,1fr));}.gg{grid-template-columns:1fr 1fr;}}
-
-/* ── MOBILE TOUCH ───────────────────────────────── */
-* { -webkit-tap-highlight-color: transparent; }
-.btn { min-height: 36px; min-width: 44px; }
-.sel { min-height: 36px; font-size: 14px; }
-@media (max-width: 640px) {
-  .wrap { padding: 1rem; }
-  .hdr { padding: .75rem 1rem; flex-direction: column; gap: 6px; align-items: flex-start; }
-  .hdr-r { text-align: left; }
-  .krow { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
-  .fn { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .fn .fs:nth-child(2) .fa, .fn .fs:nth-child(4) .fa { display: none; }
-  .gg { grid-template-columns: 1fr !important; }
-  .fbar { gap: 8px; }
-  .btn { padding: 8px 14px; font-size: 13px; }
-  .sel { width: 100%; min-width: unset; }
-  table { font-size: 11px; }
-  th, td { padding: 7px 8px; }
-  .tw { overflow-x: auto; }
-  div[style*="grid-template-columns:1fr 1fr"],
-  div[style*="grid-template-columns:1.1fr 2fr"],
-  div[style*="grid-template-columns:1fr 2fr"] {
-    grid-template-columns: 1fr !important;
-  }
-  .brow .bnm { width: 120px; font-size: 10px; }
-  .ftr { flex-direction: column; gap: 4px; text-align: center; }
+:root{
+  --teal:#52BEC0;--tl:rgba(82,190,192,.09);--tm:rgba(82,190,192,.18);
+  --black:#1C1E21;--white:#fff;
+  --g50:#F8F9FA;--g100:#F1F3F4;--g200:#E8EAED;--g300:#DADCE0;
+  --g400:#BDC1C6;--g500:#80868B;--g600:#5F6368;--g700:#3C4043;--g900:#202124;
+  --v1:#1A73E8;--v1l:rgba(26,115,232,.09);--v1m:rgba(26,115,232,.2);
+  --v2:#1E8E3E;--v2l:rgba(30,142,62,.09);--v2m:rgba(30,142,62,.2);
+  --v3:#7B2FBE;--v3l:rgba(123,47,190,.09);--v3m:rgba(123,47,190,.2);
+  --v4:#D56E0C;--v4l:rgba(213,110,12,.09);--v4m:rgba(213,110,12,.2);
+  --red:#D93025;--rl:rgba(217,48,37,.09);
+  --green:#1E8E3E;--gl:rgba(30,142,62,.09);
+  --amber:#F29900;--al:rgba(242,153,0,.09);
+  --sh-sm:0 1px 2px rgba(60,64,67,.1),0 1px 3px rgba(60,64,67,.08);
+  --sh:0 1px 4px rgba(60,64,67,.12),0 2px 8px rgba(60,64,67,.07);
+  --r:10px;--rs:6px;
 }
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:'Montserrat',sans-serif;background:var(--g50);color:var(--g900);min-height:100vh;}
 
+/* HEADER */
+.hdr{background:var(--white);border-bottom:1px solid var(--g200);padding:0 1.5rem;
+  height:58px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:200;box-shadow:var(--sh-sm);}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand-logo{width:34px;height:34px;background:var(--black);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;}
+.brand-name{font-size:14px;font-weight:700;letter-spacing:-.3px;}
+.brand-sub{font-size:9px;color:var(--teal);letter-spacing:2px;text-transform:uppercase;font-weight:600;}
+.hdr-chip{background:var(--tl);border:1px solid var(--tm);border-radius:20px;
+  padding:4px 12px;font-size:11px;font-weight:600;color:var(--teal);font-family:'DM Mono',monospace;}
+.hdr-warn{background:var(--al);border:1px solid rgba(242,153,0,.25);border-radius:20px;
+  padding:4px 10px;font-size:10px;font-weight:600;color:#7a4f00;}
+.spec-btn{padding:5px 12px;border-radius:var(--rs);border:1px solid var(--g300);
+  background:var(--white);color:var(--g600);font-family:'Montserrat',sans-serif;
+  font-size:10px;font-weight:600;cursor:pointer;transition:all .15s;}
+.spec-btn:hover{border-color:var(--teal);color:var(--teal);background:var(--tl);}
+
+/* LAYOUT */
+.wrap{max-width:1440px;margin:0 auto;padding:1.25rem 1.5rem;}
+
+/* NAV */
+.nav{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);
+  padding:.8rem 1rem;margin-bottom:1.25rem;display:flex;flex-wrap:wrap;gap:10px;
+  align-items:center;box-shadow:var(--sh-sm);}
+.nlbl{font-size:9px;color:var(--g500);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;}
+.npills{display:flex;gap:4px;flex-wrap:wrap;}
+.np{padding:5px 13px;border-radius:20px;border:1px solid var(--g300);background:var(--white);
+  color:var(--g600);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:500;
+  cursor:pointer;transition:all .15s;white-space:nowrap;}
+.np:hover{border-color:var(--g500);color:var(--g900);}
+.np.on{font-weight:700;}
+.np.ng.on{background:var(--teal);border-color:var(--teal);color:#fff;}
+.np.n1.on{background:var(--v1);border-color:var(--v1);color:#fff;}
+.np.n2.on{background:var(--v2);border-color:var(--v2);color:#fff;}
+.np.n3.on{background:var(--v3);border-color:var(--v3);color:#fff;}
+.np.n4.on{background:var(--v4);border-color:var(--v4);color:#fff;}
+.ndiv{width:1px;background:var(--g200);align-self:stretch;margin:0 4px;}
+.chips{display:flex;gap:4px;flex-wrap:wrap;max-width:900px;}
+.chip{padding:3px 9px;border-radius:12px;border:1px solid var(--g200);background:var(--white);
+  color:var(--g600);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:500;
+  cursor:pointer;transition:all .15s;white-space:nowrap;}
+.chip:hover{border-color:var(--g400);}
+.chip.on{font-weight:700;}
+.chip.c1.on{background:var(--v1l);border-color:var(--v1);color:var(--v1);}
+.chip.c2.on{background:var(--v2l);border-color:var(--v2);color:var(--v2);}
+.chip.c3.on{background:var(--v3l);border-color:var(--v3);color:var(--v3);}
+.chip.c4.on{background:var(--v4l);border-color:var(--v4);color:var(--v4);}
+
+/* SECTION HEADING */
+.sh{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--g500);margin-bottom:.7rem;}
+.sh-colored{border-left:3px solid;padding-left:8px;}
+
+/* KPI CARDS */
+.kr{display:grid;gap:10px;margin-bottom:1.25rem;}
+.k3{grid-template-columns:repeat(3,1fr);}
+.k4{grid-template-columns:repeat(4,1fr);}
+.k6{grid-template-columns:repeat(6,1fr);}
+.k7{grid-template-columns:repeat(7,1fr);}
+.kc{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);
+  padding:.875rem 1rem;position:relative;overflow:hidden;box-shadow:var(--sh-sm);}
+.kc:hover{box-shadow:var(--sh);}
+.kc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.kteal::before{background:var(--teal);}
+.kblue::before{background:var(--v1);}
+.kgreen::before{background:var(--v2);}
+.kamber::before{background:var(--amber);}
+.kred::before{background:var(--red);}
+.kgray::before{background:var(--g300);}
+.kpurple::before{background:var(--v3);}
+.korange::before{background:var(--v4);}
+.kl{font-size:9px;font-weight:700;color:var(--g500);letter-spacing:.8px;
+  text-transform:uppercase;margin-bottom:4px;margin-top:4px;}
+.kv{font-size:26px;font-weight:700;font-family:'DM Mono',monospace;line-height:1;
+  margin-bottom:3px;color:var(--g900);}
+.ks{font-size:9px;color:var(--g500);}
+.kbdg{display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:700;
+  padding:2px 6px;border-radius:10px;margin-top:5px;}
+.bup{background:var(--gl);color:var(--green);}
+.bwarn{background:var(--al);color:#7a4f00;}
+.bdown{background:var(--rl);color:var(--red);}
+.bneut{background:var(--g100);color:var(--g600);}
+
+/* FUNNEL */
+.fn-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);
+  padding:1.1rem 1.25rem;margin-bottom:1.25rem;box-shadow:var(--sh-sm);}
+.fn-title{font-size:11px;font-weight:700;color:var(--g600);letter-spacing:.5px;
+  text-transform:uppercase;margin-bottom:.875rem;}
+.fn-steps{display:flex;align-items:stretch;}
+.fns{flex:1;padding:.8rem .7rem;background:var(--g50);border:1px solid var(--g200);position:relative;}
+.fns:first-child{border-radius:var(--rs) 0 0 var(--rs);}
+.fns:last-child{border-radius:0 var(--rs) var(--rs) 0;}
+.fns+.fns{border-left:none;}
+.fl{font-size:8px;font-weight:700;color:var(--g500);letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px;}
+.fval{font-size:22px;font-weight:700;font-family:'DM Mono',monospace;line-height:1;margin-bottom:2px;}
+.fpct{font-size:10px;font-weight:600;}
+.fbar{height:3px;background:var(--g200);border-radius:2px;margin-top:7px;}
+.fbar-f{height:100%;border-radius:2px;}
+.farr{position:absolute;right:-10px;top:50%;transform:translateY(-50%);
+  color:var(--g400);font-size:16px;z-index:2;}
+
+/* CHARTS */
+.cg2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.25rem;}
+.cg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:1.25rem;}
+.cc{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);
+  padding:1.1rem 1.25rem;box-shadow:var(--sh-sm);}
+.ct{font-size:9px;font-weight:700;color:var(--g600);letter-spacing:1.5px;
+  text-transform:uppercase;margin-bottom:.875rem;}
+
+/* Horizontal bars */
+.hbr{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.hbl{width:130px;font-size:10px;color:var(--g700);text-align:right;flex-shrink:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.hbt{flex:1;background:var(--g100);border-radius:3px;height:16px;position:relative;overflow:hidden;}
+.hbf{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:6px;}
+.hbv{font-size:9px;font-family:'DM Mono',monospace;font-weight:600;color:rgba(255,255,255,.92);}
+.hbvo{position:absolute;right:5px;top:50%;transform:translateY(-50%);
+  font-size:9px;font-family:'DM Mono',monospace;color:var(--g500);}
+.hbtag{width:22px;font-size:8px;font-weight:700;font-family:'DM Mono',monospace;flex-shrink:0;}
+
+/* Progress bars */
+.pbr{margin-bottom:11px;}
+.pbh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;}
+.pbl{font-size:10px;font-weight:500;color:var(--g700);}
+.pbv{font-size:11px;font-weight:700;font-family:'DM Mono',monospace;}
+.pbt{background:var(--g100);border-radius:4px;height:7px;overflow:hidden;}
+.pbf{height:100%;border-radius:4px;}
+
+/* TABLE */
+.tc{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);
+  overflow:hidden;margin-bottom:1.25rem;box-shadow:var(--sh-sm);}
+.tsc{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:11px;}
+thead tr{background:var(--g50);}
+th{padding:8px 11px;text-align:left;font-size:8px;font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;color:var(--g500);border-bottom:1px solid var(--g200);}
+th.nr,td.nr{text-align:right;}
+td{padding:7px 11px;border-bottom:1px solid var(--g100);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:var(--g50);}
+tr.sub td{background:var(--g50);font-weight:700;}
+.tn{font-weight:500;}
+.mn{font-family:'DM Mono',monospace;font-weight:500;}
+.bdg{display:inline-block;padding:2px 7px;border-radius:10px;font-size:8px;font-weight:700;font-family:'DM Mono',monospace;}
+.bv1{background:var(--v1l);color:var(--v1);}
+.bv2{background:var(--v2l);color:var(--v2);}
+.bv3{background:var(--v3l);color:var(--v3);}
+.bv4{background:var(--v4l);color:var(--v4);}
+.tag{display:inline-block;padding:2px 6px;border-radius:3px;font-size:8px;font-family:'DM Mono',monospace;font-weight:700;}
+.tg{background:var(--gl);color:var(--green);}
+.ta{background:var(--al);color:#7a4f00;}
+.tr2{background:var(--rl);color:var(--red);}
+.tneu{background:var(--g100);color:var(--g500);}
+
+/* ALERTS */
+.al{border-radius:var(--rs);padding:.7rem .9rem;margin-bottom:.875rem;
+  font-size:11px;line-height:1.6;border:1px solid;display:flex;gap:7px;align-items:flex-start;}
+.al-ico{font-size:13px;flex-shrink:0;margin-top:1px;}
+.al-red{background:var(--rl);border-color:rgba(217,48,37,.2);color:#b31412;}
+.al-amber{background:var(--al);border-color:rgba(242,153,0,.2);color:#7a4f00;}
+.al-blue{background:var(--v1l);border-color:rgba(26,115,232,.2);color:#0d5fb3;}
+.al-green{background:var(--gl);border-color:rgba(30,142,62,.2);color:#137333;}
+.al strong{font-weight:700;}
+
+/* GER CARDS */
+.gc4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.25rem;}
+.gcard{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);
+  overflow:hidden;box-shadow:var(--sh-sm);}
+.ghead{padding:.8rem 1rem;border-bottom:1px solid var(--g100);}
+.gname{font-size:13px;font-weight:700;margin-bottom:2px;}
+.gger{font-size:10px;color:var(--g500);}
+.gbody{padding:.7rem 1rem;}
+.grow{display:flex;justify-content:space-between;align-items:baseline;
+  padding:4px 0;border-bottom:1px solid var(--g50);font-size:11px;}
+.grow:last-child{border-bottom:none;}
+.gml{color:var(--g600);font-size:10px;}
+.gmv{font-weight:700;font-family:'DM Mono',monospace;}
+.gc{font-size:9px;margin-left:4px;font-weight:700;}
+
+/* SPEC */
+.sp{display:none;background:var(--white);border:1px solid var(--g200);border-radius:var(--r);
+  padding:2rem;margin-bottom:1.25rem;box-shadow:var(--sh);}
+.sp.open{display:block;}
+.sp h2{font-size:17px;font-weight:700;color:var(--black);margin-bottom:.5rem;}
+.sp h3{font-size:12px;font-weight:700;color:var(--g900);margin:1.25rem 0 .4rem;
+  padding-left:.75rem;border-left:3px solid var(--teal);}
+.sp h4{font-size:10px;font-weight:700;color:var(--teal);margin:.6rem 0 .2rem;text-transform:uppercase;letter-spacing:1px;}
+.sp p,.sp li{font-size:10px;color:var(--g600);line-height:1.7;}
+.sp ul,.sp ol{padding-left:1.2rem;margin:.2rem 0;}
+.sp code{background:var(--g100);color:var(--teal);padding:1px 5px;border-radius:3px;font-family:'DM Mono',monospace;font-size:9px;}
+.sp table{font-size:9px;margin:.4rem 0;width:100%;border-collapse:collapse;}
+.sp th{background:var(--g50);padding:5px 9px;text-align:left;border-bottom:1px solid var(--g200);
+  font-size:8px;letter-spacing:.5px;text-transform:uppercase;font-weight:700;}
+.sp td{padding:4px 9px;border-bottom:1px solid var(--g100);color:var(--g600);}
+.sp-div{height:1px;background:var(--g200);margin:1.25rem 0;}
+
+/* VIEWS */
+.view{display:none;}.view.on{display:block;}
+
+/* FOOTER */
+.ftr{background:var(--black);padding:.875rem 1.5rem;display:flex;justify-content:space-between;align-items:center;margin-top:1rem;}
+.fb{color:var(--teal);font-size:11px;font-weight:700;letter-spacing:1px;}
+.fs{font-size:9px;color:var(--g500);}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hdr{padding:0 1rem;}.wrap{padding:1rem;}
+  .kr{grid-template-columns:repeat(2,1fr)!important;}
+  .fn-steps{flex-wrap:wrap;gap:5px;}
+  .fns{border-radius:var(--rs)!important;border:1px solid var(--g200)!important;flex:1 1 42%;}
+  .farr{display:none;}
+  .cg2,.cg3,.gc4{grid-template-columns:1fr;}
+  .hdr-chip,.hdr-warn{display:none;}
+  .chips{max-width:100%;}
+}
 </style>
 </head>
 <body>
+
 <div class="hdr">
-  <div class="hdr-l"><div class="t1">Altaltium Real Estate Solutions</div><div class="t2">Dashboard KPI Comercial</div></div>
-  <div class="hdr-r"><div class="p1">Período de análisis</div><div class="p2">27 Mar 11:00 → 03 Abr 11:00 · 2026</div></div>
+  <div class="brand">
+    <div class="brand-logo">
+      <svg viewBox="0 0 20 20" fill="none">
+        <polygon points="10,2 18,16 2,16" fill="none" stroke="#52BEC0" stroke-width="2"/>
+        <line x1="10" y1="2" x2="10" y2="16" stroke="#52BEC0" stroke-width="1.2" opacity=".5"/>
+        <line x1="6" y1="11" x2="14" y2="11" stroke="#52BEC0" stroke-width="1.2" opacity=".5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="brand-name">Altaltium Real Estate</div>
+      <div class="brand-sub">Panel KPI Ejecutivo</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div class="hdr-chip">03–10 Abr 2026</div>
+    <div class="hdr-warn">⚠ Portal inactivo Mar 7–8</div>
+  </div>
+  <div style="display:flex;gap:8px">
+    <button class="spec-btn" onclick="toggleSpec()">📋 Spec Dev</button>
+  </div>
 </div>
+
 <div class="wrap">
 
-  <!-- FILTER BAR -->
-  <div class="fbar" style="overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;-webkit-overflow-scrolling:touch;">
-    <span class="flbl">Ver:</span>
-    <button class="btn act"   onclick="sv('gen')">General</button>
-    <button class="btn bv1"   onclick="sv('v1')">Ventas 1</button>
-    <button class="btn bv2"   onclick="sv('v2')">Ventas 2</button>
-    <button class="btn bv3"   onclick="sv('v3')">Ventas 3</button>
-    <button class="btn bv4"   onclick="sv('v4')">Ventas 4</button>
-    <button class="btn bv3"   onclick="sv('ases')">Por Asesor</button>
-    <select class="sel" id="sel-a" onchange="selA(this.value)" style="display:none">
-      <option value="">— Selecciona asesor —</option>
-      <option value="Yolanda Rojas">Yolanda Rojas (V2)</option>
-      <option value="Leonardo Furlong">Leonardo Furlong (V3)</option>
-      <option value="Alberto Cortés">Alberto Cortés (V1)</option>
-      <option value="Néstor Portilla">Néstor Portilla (V2)</option>
-      <option value="Francisco Llorens">Francisco Llorens (V2)</option>
-      <option value="Remedios Hernández">Remedios Hernández (V1)</option>
-      <option value="Mauricio Escalante">Mauricio Escalante (V1)</option>
-      <option value="Alejandro Mojica">Alejandro Mojica (V3)</option>
-      <option value="Valentina Salgado">Valentina Salgado (V2)</option>
-      <option value="Samantha Lopez">Samantha Lopez (V3)</option>
-      <option value="Arturo González">Arturo González (V1)</option>
-      <option value="Carmina Bolaños">Carmina Bolaños (V2)</option>
-      <option value="Roseyra Díaz">Roseyra Díaz (V1)</option>
-      <option value="Vanessa Arias">Vanessa Arias (V1)</option>
-      <option value="Claudia Calderón">Claudia Calderón (V1)</option>
-      <option value="Celia Martínez">Celia Martínez (V1)</option>
-      <option value="Víctor García">Víctor García (V1)</option>
-      <option value="Andrés Medina">Andrés Medina (V4)</option>
-      <option value="Domingo Infante">Domingo Infante (V4)</option>
-      <option value="Griselda Vergara">Griselda Vergara (V4)</option>
-      <option value="Orlando Palacios">Orlando Palacios (V1)</option>
-      <option value="Paulette Magny">Paulette Magny (V3)</option>
-    </select>
+<!-- SPEC PANEL -->
+<div class="sp" id="spec-panel">
+  <h2>📋 Especificación Funcional — Panel KPI Altaltium CRM</h2>
+  <p>Documento técnico para el programador. Define fuentes de datos, lógica de cálculo, estructura de vistas e interactividad del panel integrado en Inmovalor/BLOKK.</p>
+  <div class="sp-div"></div>
+  <h3>1. Fuentes de datos y endpoints</h3>
+  <h4>Portal (Inmuebles24)</h4>
+  <ul>
+    <li><strong>Rendimiento por período:</strong> exportación diaria con Exposición, Visualizaciones, Consultas recibidas. Endpoint: <code>GET /api/portal/rendimiento?cuenta=&fecha_inicio=&fecha_fin=</code></li>
+    <li><strong>Interesados:</strong> exportación de leads con código de asesor y timestamp. Endpoint: <code>GET /api/portal/interesados?cuenta=&periodo=</code></li>
+    <li><strong>Cuentas:</strong> V1=ALTALTIUM REAL ESTATES VENTAS 1 · V2=Altaltium Real Estates Premium · V3=Classic A · V4=Ventas 4</li>
+    <li><strong>Nota portal inactivo:</strong> el sistema debe detectar automáticamente días con Exposición &lt; 1,000 y marcarlos como "portal inactivo", excluyendo esos días del promedio diario pero manteniendo el total acumulado con nota contextual.</li>
+  </ul>
+  <h4>CRM (Inmovalor)</h4>
+  <ul>
+    <li><strong>Leads registrados:</strong> por <code>Fecha hora llegada</code> dentro del período</li>
+    <li><strong>Traspasos:</strong> leads con <code>Traspasado a</code> lleno y <code>Fecha traspaso</code> dentro del período (incluir aunque la llegada sea anterior al período)</li>
+    <li><strong>Pipeline neto asesor:</strong> <code>leads_propios - traspasos_enviados + traspasos_recibidos</code></li>
+    <li><strong>Citas:</strong> fuente CITAS.xlsx hasta que esté integrado en CRM. Endpoint objetivo: <code>GET /api/citas?periodo=&asesor=</code></li>
+    <li><strong>Contratos:</strong> <code>Firmó y pagó = Sí</code> / <code>Solo firmó = Sí</code></li>
+  </ul>
+  <h4>Estructura organizacional</h4>
+  <table><thead><tr><th>Gerencia</th><th>Gerente</th><th>Asesores</th></tr></thead><tbody>
+    <tr><td>V1 — Ventas 1</td><td>Víctor García</td><td>Carlos Pacheco, Arturo González, Vanessa Arias, Alberto Cortés, Remedios Hernández, Roseyra Díaz, Mauricio Escalante, Orlando Palacios, Astrid C. Medina, Celia Martínez, Martín Naranjo + nuevos captadores</td></tr>
+    <tr><td>V2 — Ventas 2</td><td>Omar Moreno</td><td>Francisco Llorens, Yolanda Rojas, Néstor Portilla, Carmina Bolaños, Valentina Salgado</td></tr>
+    <tr><td>V3 — Ventas 3</td><td>César Mercado / L. Furlong</td><td>Samantha Lopez, Michel Quintero, José Lozano, Daniel Guerra, Paulette Magny, Alejandro Mojica, Alonso Onofre, Erica Uriostes</td></tr>
+    <tr><td>V4 — Ventas 4</td><td>Domingo Infante</td><td>Andrés Medina, Laura Patricia</td></tr>
+  </tbody></table>
+  <div class="sp-div"></div>
+  <h3>2. KPIs completos y fórmulas</h3>
+  <table><thead><tr><th>KPI</th><th>Fuente</th><th>Fórmula / Campo</th><th>Nivel</th></tr></thead><tbody>
+    <tr><td>Exposición</td><td>Portal Rendimiento</td><td>SUM(Exposición) por período</td><td>Ger / Global</td></tr>
+    <tr><td>Visualizaciones</td><td>Portal Rendimiento</td><td>SUM(Visualizaciones) por período</td><td>Ger / Global</td></tr>
+    <tr><td>Interesados portal</td><td>Portal Rendimiento</td><td>SUM(Consultas recibidas) por período</td><td>Ger / Global</td></tr>
+    <tr><td>Leads por asesor (portal)</td><td>Portal Interesados</td><td>COUNT por código de asesor, timestamp en período</td><td>Asesor</td></tr>
+    <tr><td>Leads registrados CRM</td><td>CRM</td><td>COUNT WHERE fecha_llegada IN período</td><td>Global / Ger / Asesor</td></tr>
+    <tr><td>Tasa de captura</td><td>Portal + CRM</td><td>CRM_registrados / Interesados_portal × 100</td><td>Ger / Asesor</td></tr>
+    <tr><td>Traspasos enviados</td><td>CRM</td><td>COUNT WHERE Traspasado_por = asesor AND fecha_traspaso IN período</td><td>Asesor</td></tr>
+    <tr><td>Traspasos recibidos</td><td>CRM</td><td>COUNT WHERE Traspasado_a = asesor AND fecha_traspaso IN período</td><td>Asesor</td></tr>
+    <tr><td>Pipeline neto</td><td>CRM</td><td>crm_propios − trasp_enviados + trasp_recibidos</td><td>Asesor</td></tr>
+    <tr><td>En seguimiento</td><td>CRM</td><td>COUNT WHERE Estatus_lead = "open"</td><td>Global / Ger / Asesor</td></tr>
+    <tr><td>Citas agendadas</td><td>CITAS</td><td>COUNT filas del período (excl. MKT)</td><td>Global / Ger / Asesor</td></tr>
+    <tr><td>Citas atendidas</td><td>CITAS</td><td>COUNT WHERE ASISTENCIA = "SI"</td><td>Global / Ger / Asesor</td></tr>
+    <tr><td>% Asistencia</td><td>CITAS</td><td>Atendidas / Agendadas × 100</td><td>Ger / Asesor</td></tr>
+    <tr><td>Contratos firmados</td><td>CRM</td><td>COUNT WHERE Solo_firmó = "Sí"</td><td>Global / Ger / Asesor</td></tr>
+    <tr><td>Contratos pagados</td><td>CRM</td><td>COUNT WHERE Firmó_y_pagó = "Sí"</td><td>Global / Ger / Asesor</td></tr>
+  </tbody></table>
+  <div class="sp-div"></div>
+  <h3>3. Interactividad requerida</h3>
+  <ol>
+    <li><strong>Filtro período:</strong> semana (corte 11am viernes), mes, rango personalizado con date picker</li>
+    <li><strong>Filtro gerencia:</strong> pills V1/V2/V3/V4, selección individual o múltiple</li>
+    <li><strong>Selector multi-asesor:</strong> chips por asesor — al seleccionar 2+ activa automáticamente vista comparativa</li>
+    <li><strong>Vista comparativa:</strong> gráficas lado a lado, todos los KPIs en paralelo para los asesores seleccionados</li>
+    <li><strong>Tooltips en gráficas:</strong> hover/tap muestra nombre, valor y % conversión</li>
+    <li><strong>Ordenar tabla:</strong> click en cabecera ordena ↑↓ por esa columna</li>
+    <li><strong>Nota automática portal inactivo:</strong> si días activos &lt; 5 en semana, mostrar badge de advertencia con días afectados</li>
+    <li><strong>Export:</strong> botón PDF/Excel de la vista actual</li>
+    <li><strong>Actualización:</strong> refrescar al cargar + cada hora</li>
+  </ol>
+  <h3>4. Alertas automáticas</h3>
+  <ul>
+    <li>🔴 Captura portal→CRM &lt; 50% para cualquier gerencia</li>
+    <li>🟡 0 citas en semana con &gt; 20 leads en CRM (por asesor)</li>
+    <li>🔴 0 leads registrados en CRM con &gt; 0 en portal (por gerencia = V4 patrón)</li>
+    <li>🟢 Contrato pagado → notificación inmediata</li>
+    <li>🟡 Portal inactivo &gt; 1 día: badge con días afectados</li>
+  </ul>
+  <h3>5. Stack sugerido</h3>
+  <ul>
+    <li>Charts: <code>Chart.js 4</code> o <code>ApexCharts</code> (tooltips interactivos nativos)</li>
+    <li>Auth: respetar roles CRM existentes — admin/manager/advisor/directivo filtran automáticamente</li>
+    <li>Export PDF: <code>html2canvas + jsPDF</code></li>
+    <li>Mobile: CSS Grid, min-touch-target 44px, tablas con overflow-x</li>
+  </ul>
+</div><!-- /spec -->
+
+
+<!-- NAV + FUNNEL CHART -->
+<div style="display:grid;grid-template-columns:1fr auto;gap:10px;margin-bottom:1rem;align-items:stretch;">
+
+  <!-- LEFT: controls -->
+  <div class="nav" style="margin-bottom:0;flex-direction:column;gap:10px;align-items:flex-start;">
+    <div style="display:flex;flex-direction:column;gap:5px;width:100%">
+      <div class="nlbl">Vista</div>
+      <div class="npills">
+        <button class="np ng on" onclick="sv('gen',this)">General</button>
+        <button class="np n1"    onclick="sv('v1',this)">Ventas 1</button>
+        <button class="np n2"    onclick="sv('v2',this)">Ventas 2</button>
+        <button class="np n3"    onclick="sv('v3',this)">Ventas 3</button>
+        <button class="np n4"    onclick="sv('v4',this)">Ventas 4</button>
+      </div>
+    </div>
+    <div class="ndiv" style="width:100%;height:1px;align-self:auto;margin:0;"></div>
+    <div style="display:flex;flex-direction:column;gap:5px;width:100%">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+        <div class="nlbl">Comparar asesores <span style="color:var(--teal);font-size:9px">— selecciona 2 o más</span></div>
+        <button id="desel-btn" onclick="deselAll()" style="display:none;padding:2px 9px;border-radius:10px;
+          border:1px solid var(--g300);background:var(--white);color:var(--g600);
+          font-family:'Montserrat',sans-serif;font-size:9px;font-weight:600;cursor:pointer;
+          transition:all .15s;" onmouseover="this.style.borderColor='var(--red)';this.style.color='var(--red)'"
+          onmouseout="this.style.borderColor='var(--g300)';this.style.color='var(--g600)'">
+          ✕ Deseleccionar todo
+        </button>
+      </div>
+      <div id="chips"></div>
+    </div>
   </div>
 
-  <!-- ══════════════ GENERAL ══════════════ -->
-  <div class="view act" id="view-gen">
-    <div class="sec">Resumen general — todos los portales y equipos</div>
-    <div class="krow">
-      <div class="k ct"><div class="kl">Leads del portal</div><div class="kv">444</div><div class="ks">4 cuentas · 11am→11am</div></div>
-      <div class="k ct"><div class="kl">Leads en CRM</div><div class="kv">380</div><div class="ks">85.6% captura total</div></div>
-      <div class="k cg"><div class="kl">Citas agendadas</div><div class="kv">11</div><div class="ks">Ventas · excl. MKT</div></div>
-      <div class="k cg"><div class="kl">Citas atendidas</div><div class="kv">8</div><div class="ks">72.7% asistencia</div></div>
-      <div class="k cz"><div class="kl">Contratos firmados</div><div class="kv">0</div><div class="ks">Sin ventas esta semana</div></div>
-      <div class="k cz"><div class="kl">Contratos pagados</div><div class="kv">0</div><div class="ks">Sin ventas esta semana</div></div>
+  <!-- RIGHT: funnel chart -->
+  <div style="background:var(--white);border:1px solid var(--g200);border-radius:var(--r);
+    padding:.875rem 1.1rem;box-shadow:var(--sh-sm);min-width:520px;max-width:580px;">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:.6rem;">
+      <div style="font-size:9px;font-weight:700;color:var(--g500);letter-spacing:1.5px;text-transform:uppercase;">
+        Embudo de conversión
+      </div>
+      <div id="funnel-badge" style="font-size:9px;font-weight:700;font-family:'DM Mono',monospace;
+        color:var(--teal);background:var(--tl);border:1px solid var(--tm);
+        border-radius:10px;padding:1px 8px;">GENERAL</div>
     </div>
-
-    <div class="sec">Funnel de conversión general</div>
-    <div class="fn">
-      <div class="fs"><div class="fl">Leads del portal</div><div class="fv" style="color:var(--teal)">444</div><div class="fc fcn">100%</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Registrados CRM</div><div class="fv" style="color:var(--teal)">380</div><div class="fc fct">85.6%</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Citas agendadas</div><div class="fv" style="color:#4ade80">11</div><div class="fc fct">2.9% de CRM</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Citas atendidas</div><div class="fv" style="color:#4ade80">8</div><div class="fc fct">72.7% de ag.</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Contratos firmados</div><div class="fv" style="color:#252525">0</div><div class="fc fcz">—</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Contratos pagados</div><div class="fv" style="color:#252525">0</div><div class="fc fcz">—</div></div>
+    <!-- Tooltip -->
+    <div id="funnel-tooltip" style="display:none;position:fixed;background:var(--g900);color:#fff;
+      font-size:10px;font-family:'DM Mono',monospace;padding:6px 10px;border-radius:6px;
+      z-index:999;pointer-events:none;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.2)"></div>
+    <!-- Chart area -->
+    <div id="funnel-chart" style="display:flex;flex-direction:column;gap:4px;"></div>
+    <div style="display:flex;gap:12px;margin-top:.6rem;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:4px;font-size:8px;color:var(--g500)">
+        <div style="width:8px;height:8px;border-radius:2px;background:#52BEC0;flex-shrink:0"></div>Portal
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;font-size:8px;color:var(--g500)">
+        <div style="width:8px;height:8px;border-radius:2px;background:#1A73E8;flex-shrink:0"></div>CRM
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;font-size:8px;color:var(--g500)">
+        <div style="width:8px;height:8px;border-radius:2px;background:#1E8E3E;flex-shrink:0"></div>Citas
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;font-size:8px;color:var(--g500)">
+        <div style="width:8px;height:8px;border-radius:2px;background:#F29900;flex-shrink:0"></div>Contratos
+      </div>
+      <div style="font-size:8px;color:var(--g400);margin-left:auto;font-style:italic">hover para detalle</div>
     </div>
+  </div>
 
-    <div class="alert"><strong>⚠ Ventas 4:</strong> 26 leads del portal → 0 en CRM. Andrés Medina (14), Domingo Infante (6) y Griselda Vergara (6) no capturaron ningún lead esta semana.</div>
-    <div class="info"><strong>Traspasos (52 total):</strong> Yolanda→Furlong (27), Valentina→Furlong (12), Alberto Cortés→Furlong (5), Roseyra→Furlong (2), otros (6). Pipeline total de Furlong: 51 leads en CRM.</div>
+</div>
 
-    <div class="sec">Leads por gerencia — portal vs CRM</div>
-    <div class="gg">
-      <div class="gc" style="border-top:2px solid #52BEC0">
-        <div class="gch" style="background:rgba(82,190,192,.05)">
-          <div><div class="gn" style="color:var(--teal)">Ventas 1</div><div class="gge">Víctor M. García</div></div>
-          <div class="gbdg" style="background:rgba(82,190,192,.1);color:var(--teal)">V1</div>
-        </div>
-        <div class="gcb">
-          <div class="gr"><span class="gm">Leads del portal</span><span class="gv">142</span></div>
-          <div class="gr"><span class="gm">Leads en CRM</span><span class="gv">104<span class="gt">73.2%</span></span></div>
-          <div class="gr"><span class="gm">Citas agendadas</span><span class="gv">7</span></div>
-          <div class="gr"><span class="gm">Citas atendidas</span><span class="gv">4<span class="gt">57.1%</span></span></div>
-          <div class="gr"><span class="gm">Conv. portal→cita</span><span class="gv" style="color:var(--teal)">4.9%</span></div>
-          <div class="gr"><span class="gm">Contratos</span><span class="gv" style="color:#252525">0 / 0</span></div>
-        </div>
-      </div>
-      <div class="gc" style="border-top:2px solid #185FA5">
-        <div class="gch" style="background:rgba(24,95,165,.05)">
-          <div><div class="gn" style="color:#5BA3D9">Ventas 2</div><div class="gge">Manuel O. Moreno</div></div>
-          <div class="gbdg" style="background:rgba(24,95,165,.15);color:#5BA3D9">V2</div>
-        </div>
-        <div class="gcb">
-          <div class="gr"><span class="gm">Leads del portal</span><span class="gv">205</span></div>
-          <div class="gr"><span class="gm">Leads en CRM</span><span class="gv">193<span class="gt">94.1%</span></span></div>
-          <div class="gr"><span class="gm">Citas agendadas</span><span class="gv">1</span></div>
-          <div class="gr"><span class="gm">Citas atendidas</span><span class="gv">1<span class="gt">100%</span></span></div>
-          <div class="gr"><span class="gm">Conv. portal→cita</span><span class="gv" style="color:#facc15">0.5% ⚠</span></div>
-          <div class="gr"><span class="gm">Contratos</span><span class="gv" style="color:#252525">0 / 0</span></div>
-        </div>
-      </div>
-      <div class="gc" style="border-top:2px solid #555">
-        <div class="gch" style="background:rgba(59,59,59,.12)">
-          <div><div class="gn" style="color:#aaa">Ventas 3</div><div class="gge">C. Mercado / L. Furlong</div></div>
-          <div class="gbdg" style="background:rgba(59,59,59,.4);color:#aaa">V3</div>
-        </div>
-        <div class="gcb">
-          <div class="gr"><span class="gm">Leads del portal</span><span class="gv">43</span></div>
-          <div class="gr"><span class="gm">CRM propio</span><span class="gv">29<span class="gw">67.4%</span></span></div>
-          <div class="gr"><span class="gm">Pipeline + traspasos</span><span class="gv" style="color:var(--teal)">80 <span style="font-size:9px">+51</span></span></div>
-          <div class="gr"><span class="gm">Citas agendadas</span><span class="gv">2</span></div>
-          <div class="gr"><span class="gm">Citas atendidas</span><span class="gv">2<span class="gt">100%</span></span></div>
-          <div class="gr"><span class="gm">Contratos</span><span class="gv" style="color:#252525">0 / 0</span></div>
-        </div>
-      </div>
-      <div class="gc" style="border-top:2px solid #f87171">
-        <div class="gch" style="background:rgba(248,113,113,.05)">
-          <div><div class="gn" style="color:#f87171">Ventas 4</div><div class="gge">Domingo Infante</div></div>
-          <div class="gbdg" style="background:rgba(248,113,113,.12);color:#f87171">V4</div>
-        </div>
-        <div class="gcb">
-          <div class="gr"><span class="gm">Leads del portal</span><span class="gv" style="color:#f87171">26</span></div>
-          <div class="gr"><span class="gm">Leads en CRM</span><span class="gv"><span class="grr">0 · 0% ✗</span></span></div>
-          <div class="gr"><span class="gm">Citas agendadas</span><span class="gv" style="color:#252525">0</span></div>
-          <div class="gr"><span class="gm">Citas atendidas</span><span class="gv" style="color:#252525">0</span></div>
-          <div class="gr"><span class="gm">Conv. portal→cita</span><span class="gv" style="color:#252525">—</span></div>
-          <div class="gr"><span class="gm">Contratos</span><span class="gv" style="color:#252525">0 / 0</span></div>
-        </div>
-      </div>
+
+
+
+
+<!-- ══════════ GENERAL ══════════ -->
+<div class="view on" id="view-gen">
+
+  <div class="al al-amber"><span class="al-ico">⚠️</span><div><strong>Portal inactivo 2 días:</strong> El portal operó con mínima actividad el martes 7 y miércoles 8 de abril (278 y 105 impresiones vs. ~14,000 en días normales). Los KPIs de exposición, visualizaciones e interesados están afectados. Los datos de CRM, citas y contratos son 100% confiables.</div></div>
+
+  <!-- Portal KPIs -->
+  <div class="sh">▸ Portal — Rendimiento del período (5 días activos de 7)</div>
+  <div class="kr k4" style="margin-bottom:.5rem">
+    <div class="kc kteal"><div class="kl">Exposición total</div><div class="kv" style="color:var(--teal)">186,788</div><div class="ks">V1: 73,975 · V2: 70,351 · V3: 23,026 · V4: 19,436</div><div class="kbdg bwarn">⚠ 2 días sin datos</div></div>
+    <div class="kc kteal"><div class="kl">Visualizaciones</div><div class="kv" style="color:var(--teal)">11,705</div><div class="ks">V1: 4,958 · V2: 4,642 · V3: 1,339 · V4: 766</div><div class="kbdg bwarn">⚠ 2 días sin datos</div></div>
+    <div class="kc kteal"><div class="kl">Interesados portal</div><div class="kv" style="color:var(--teal)">342</div><div class="ks">V1: 118 · V2: 137 · V3: 54 · V4: 33</div><div class="kbdg bwarn">⚠ 2 días sin datos</div></div>
+    <div class="kc kblue"><div class="kl">Leads del archivo</div><div class="kv" style="color:var(--v1)">50</div><div class="ks">Trazables con código asesor (11am filter)</div><div class="kbdg bneut">Desglose por asesor disponible</div></div>
+  </div>
+
+  <!-- CRM + Ventas KPIs -->
+  <div class="sh">▸ CRM & Ventas</div>
+  <div class="kr k7">
+    <div class="kc kblue"><div class="kl">Leads registrados</div><div class="kv" style="color:var(--v1)">66</div><div class="ks">Llegada en período</div></div>
+    <div class="kc kblue"><div class="kl">En seguimiento</div><div class="kv" style="color:var(--v1)">55</div><div class="ks">Estatus open</div></div>
+    <div class="kc kpurple"><div class="kl">Traspasos</div><div class="kv" style="color:var(--v3)">19</div><div class="ks">Ejecutados en período</div></div>
+    <div class="kc kgreen"><div class="kl">Citas agendadas</div><div class="kv" style="color:var(--v2)">13</div><div class="ks">Excl. MKT</div></div>
+    <div class="kc kgreen"><div class="kl">Citas atendidas</div><div class="kv" style="color:var(--v2)">8</div><div class="ks">61.5% asistencia</div></div>
+    <div class="kc kgray"><div class="kl">Contratos firmados</div><div class="kv" style="color:var(--g400)">0</div><div class="ks">Esta semana</div></div>
+    <div class="kc kgray"><div class="kl">Contratos pagados</div><div class="kv" style="color:var(--g400)">0</div><div class="ks">Esta semana</div></div>
+  </div>
+
+  <!-- Funnel -->
+  <div class="sh" style="margin-top:.25rem">▸ Embudo de conversión — Interesados portal → Cierre</div>
+  <div class="fn-card">
+    <div class="fn-title">De interesados del portal a contrato pagado</div>
+    <div class="fn-steps">
+      <div class="fns"><div class="fl">Interesados portal</div><div class="fval" style="color:var(--teal)">342</div><div class="fpct" style="color:var(--g500)">100% <span style="font-size:8px">(⚠ 5 días)</span></div><div class="fbar"><div class="fbar-f" style="width:100%;background:var(--teal)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">Registrados CRM</div><div class="fval" style="color:var(--v1)">66</div><div class="fpct" style="color:var(--v2)">19.3%</div><div class="fbar"><div class="fbar-f" style="width:19.3%;background:var(--v1)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">En seguimiento</div><div class="fval" style="color:var(--v1)">55</div><div class="fpct" style="color:var(--v2)">83.3% de CRM</div><div class="fbar"><div class="fbar-f" style="width:83.3%;background:var(--v1)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">Citas agendadas</div><div class="fval" style="color:var(--v2)">13</div><div class="fpct" style="color:var(--v2)">19.7% de CRM</div><div class="fbar"><div class="fbar-f" style="width:19.7%;background:var(--v2)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">Citas atendidas</div><div class="fval" style="color:var(--v2)">8</div><div class="fpct" style="color:var(--amber)">61.5% de ag.</div><div class="fbar"><div class="fbar-f" style="width:61.5%;background:var(--amber)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">Contratos firmados</div><div class="fval" style="color:var(--g400)">0</div><div class="fpct" style="color:var(--g400)">—</div><div class="fbar"><div class="fbar-f" style="width:0%;background:var(--g300)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">Contratos pagados</div><div class="fval" style="color:var(--g400)">0</div><div class="fpct" style="color:var(--g400)">—</div><div class="fbar"><div class="fbar-f" style="width:0%;background:var(--g300)"></div></div></div>
     </div>
+  </div>
 
-    <div class="sec">Gráficas</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.25rem;">
-
-      <!-- Chart 1: Portal vs CRM grouped bars -->
-      <div class="cc">
-        <div class="ct2">Portal vs CRM por gerencia</div>
-        <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px;">
-          <div style="display:flex;align-items:center;gap:8px;font-size:10px;color:var(--g4);margin-bottom:2px;">
-            <span style="display:inline-block;width:10px;height:10px;background:var(--teal);border-radius:2px"></span>Portal
-            <span style="display:inline-block;width:10px;height:10px;background:rgba(255,255,255,0.18);border-radius:2px;margin-left:8px"></span>CRM
-          </div>
-          <div id="ch-ger-bars"></div>
-        </div>
-      </div>
-
-      <!-- Chart 2: Captura % horizontal bars -->
-      <div class="cc">
-        <div class="ct2">Tasa de captura portal → CRM</div>
-        <div style="display:flex;flex-direction:column;gap:14px;margin-top:12px;">
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:4px;"><span style="color:var(--teal)">V1 — Ventas 1</span><span style="font-family:'DM Mono',monospace;font-weight:600;color:#facc15">73.2%</span></div>
-            <div style="background:#1a1a1a;border-radius:4px;height:10px;overflow:hidden"><div style="width:73.2%;height:100%;background:#52BEC0;border-radius:4px"></div></div>
-          </div>
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:4px;"><span style="color:#5BA3D9">V2 — Ventas 2</span><span style="font-family:'DM Mono',monospace;font-weight:600;color:#4ade80">94.1%</span></div>
-            <div style="background:#1a1a1a;border-radius:4px;height:10px;overflow:hidden"><div style="width:94.1%;height:100%;background:#185FA5;border-radius:4px"></div></div>
-          </div>
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:4px;"><span style="color:#aaa">V3 — Ventas 3</span><span style="font-family:'DM Mono',monospace;font-weight:600;color:#facc15">67.4%</span></div>
-            <div style="background:#1a1a1a;border-radius:4px;height:10px;overflow:hidden"><div style="width:67.4%;height:100%;background:#666;border-radius:4px"></div></div>
-          </div>
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:4px;"><span style="color:#f87171">V4 — Ventas 4</span><span style="font-family:'DM Mono',monospace;font-weight:600;color:#f87171">0%  ✗</span></div>
-            <div style="background:#1a1a1a;border-radius:4px;height:10px;overflow:hidden"><div style="width:0%;height:100%;background:#f87171;border-radius:4px"></div></div>
-          </div>
-          <div style="font-size:9px;color:#333;margin-top:2px">100% = toda la cuentas del portal registrado en CRM</div>
-        </div>
+  <!-- Gerencia overview -->
+  <div class="sh">▸ Por gerencia</div>
+  <div class="gc4">
+    <div class="gcard" style="border-top:3px solid var(--v1)">
+      <div class="ghead"><div class="gname" style="color:var(--v1)">Ventas 1</div><div class="gger">Víctor García</div></div>
+      <div class="gbody">
+        <div class="grow"><span class="gml">Interesados portal</span><span class="gmv">118 <span class="gc" style="color:var(--amber)">⚠ 5 días</span></span></div>
+        <div class="grow"><span class="gml">Leads CRM</span><span class="gmv">19 <span class="gc" style="color:var(--amber)">16.1%</span></span></div>
+        <div class="grow"><span class="gml">Traspasos enviados</span><span class="gmv" style="color:var(--red)">−18 <span class="gc" style="font-size:8px">a V3/V2/V4</span></span></div>
+        <div class="grow"><span class="gml">Citas ag. / at.</span><span class="gmv">4 / 3 <span class="gc" style="color:var(--v2)">75%</span></span></div>
+        <div class="grow"><span class="gml">Contratos</span><span class="gmv" style="color:var(--g400)">0 / 0</span></div>
       </div>
     </div>
-
-    <div style="display:grid;grid-template-columns:1fr 2fr;gap:12px;margin-bottom:1.25rem;">
-
-      <!-- Chart 3: Citas ag vs atendidas -->
-      <div class="cc">
-        <div class="ct2">Citas ag. vs atendidas por gerencia</div>
-        <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px;">
-          <div style="display:flex;align-items:center;gap:8px;font-size:10px;color:var(--g4);margin-bottom:2px;">
-            <span style="display:inline-block;width:10px;height:10px;background:rgba(255,255,255,0.2);border-radius:2px"></span>Agendadas
-            <span style="display:inline-block;width:10px;height:10px;background:#4ade80;border-radius:2px;margin-left:8px"></span>Atendidas
-          </div>
-          <!-- V1 -->
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:3px;"><span style="color:var(--teal)">V1</span><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--g4)">7 ag · 4 at</span></div>
-            <div style="display:flex;gap:3px;height:12px;">
-              <div style="flex:7;background:rgba(82,190,192,0.3);border-radius:3px;display:flex;align-items:center;padding-left:4px"><span style="font-size:9px;font-family:'DM Mono',monospace;color:var(--teal)">7</span></div>
-              <div style="flex:4;background:#4ade80;border-radius:3px;display:flex;align-items:center;padding-left:4px"><span style="font-size:9px;font-family:'DM Mono',monospace;color:#000">4</span></div>
-              <div style="flex:3;background:#1a1a1a;border-radius:3px"></div>
-            </div>
-          </div>
-          <!-- V2 -->
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:3px;"><span style="color:#5BA3D9">V2</span><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--g4)">1 ag · 1 at</span></div>
-            <div style="display:flex;gap:3px;height:12px;">
-              <div style="flex:1;background:rgba(24,95,165,0.4);border-radius:3px;display:flex;align-items:center;padding-left:4px"><span style="font-size:9px;font-family:'DM Mono',monospace;color:#5BA3D9">1</span></div>
-              <div style="flex:1;background:#4ade80;border-radius:3px;display:flex;align-items:center;padding-left:4px"><span style="font-size:9px;font-family:'DM Mono',monospace;color:#000">1</span></div>
-              <div style="flex:12;background:#1a1a1a;border-radius:3px"></div>
-            </div>
-          </div>
-          <!-- V3 -->
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:3px;"><span style="color:#aaa">V3</span><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--g4)">2 ag · 2 at</span></div>
-            <div style="display:flex;gap:3px;height:12px;">
-              <div style="flex:2;background:rgba(120,120,120,0.4);border-radius:3px;display:flex;align-items:center;padding-left:4px"><span style="font-size:9px;font-family:'DM Mono',monospace;color:#aaa">2</span></div>
-              <div style="flex:2;background:#4ade80;border-radius:3px;display:flex;align-items:center;padding-left:4px"><span style="font-size:9px;font-family:'DM Mono',monospace;color:#000">2</span></div>
-              <div style="flex:10;background:#1a1a1a;border-radius:3px"></div>
-            </div>
-          </div>
-          <!-- V4 -->
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:3px;"><span style="color:#f87171">V4</span><span style="font-family:'DM Mono',monospace;font-size:10px;color:#333">0 ag · 0 at</span></div>
-            <div style="flex:14;background:#1a1a1a;border-radius:3px;height:12px"></div>
-          </div>
-        </div>
+    <div class="gcard" style="border-top:3px solid var(--v2)">
+      <div class="ghead"><div class="gname" style="color:var(--v2)">Ventas 2</div><div class="gger">Omar Moreno</div></div>
+      <div class="gbody">
+        <div class="grow"><span class="gml">Interesados portal</span><span class="gmv">137 <span class="gc" style="color:var(--amber)">⚠ 5 días</span></span></div>
+        <div class="grow"><span class="gml">Leads CRM</span><span class="gmv">27 <span class="gc" style="color:var(--amber)">19.7%</span></span></div>
+        <div class="grow"><span class="gml">Traspasos enviados</span><span class="gmv" style="color:var(--red)">−1 <span class="gc" style="font-size:8px">a V3</span></span></div>
+        <div class="grow"><span class="gml">Citas ag. / at.</span><span class="gmv">5 / 2 <span class="gc" style="color:var(--red)">40%</span></span></div>
+        <div class="grow"><span class="gml">Contratos</span><span class="gmv" style="color:var(--g400)">0 / 0</span></div>
       </div>
-
-      <!-- Chart 4: Bar chart asesor -->
-      <div class="cc"><div class="ct2">Leads del portal por asesor</div><div id="bar-gen"></div></div>
     </div>
-
-    <div class="sec">Detalle de citas — 27 Mar al 03 Abr</div>
-    <div class="krow" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:1rem;">
-      <div class="k cg"><div class="kl">Total agendadas</div><div class="kv">12</div><div class="ks">Inc. 1 cita MKT</div></div>
-      <div class="k cg"><div class="kl">Atendidas</div><div class="kv">9</div><div class="ks">75.0% asistencia</div></div>
-      <div class="k ca"><div class="kl">No concretadas</div><div class="kv">3</div><div class="ks">25.0%</div></div>
+    <div class="gcard" style="border-top:3px solid var(--v3)">
+      <div class="ghead"><div class="gname" style="color:var(--v3)">Ventas 3</div><div class="gger">C. Mercado / L. Furlong</div></div>
+      <div class="gbody">
+        <div class="grow"><span class="gml">Interesados portal</span><span class="gmv">54 <span class="gc" style="color:var(--amber)">⚠ 5 días</span></span></div>
+        <div class="grow"><span class="gml">Leads CRM propio</span><span class="gmv">14</span></div>
+        <div class="grow"><span class="gml">Traspasos recibidos</span><span class="gmv" style="color:var(--v3)">+8 <span class="gc" style="font-size:8px">desde V1</span></span></div>
+        <div class="grow"><span class="gml">Pipeline total</span><span class="gmv" style="color:var(--v3)">22</span></div>
+        <div class="grow"><span class="gml">Citas ag. / at.</span><span class="gmv">4 / 3 <span class="gc" style="color:var(--v2)">75%</span></span></div>
+      </div>
     </div>
-    <div class="tw"><table><thead><tr><th>#</th><th>Asesor</th><th>Gerente</th><th>Gerencia</th><th>Fecha</th><th>Tipo</th><th>Asistencia</th></tr></thead>
+    <div class="gcard" style="border-top:3px solid var(--v4)">
+      <div class="ghead"><div class="gname" style="color:var(--v4)">Ventas 4</div><div class="gger">Domingo Infante</div></div>
+      <div class="gbody">
+        <div class="grow"><span class="gml">Interesados portal</span><span class="gmv">33 <span class="gc" style="color:var(--amber)">⚠ 5 días</span></span></div>
+        <div class="grow"><span class="gml">Leads CRM</span><span class="gmv">5 <span class="gc" style="color:var(--amber)">15.2%</span></span></div>
+        <div class="grow"><span class="gml">Traspasos recibidos</span><span class="gmv" style="color:var(--v4)">+3</span></div>
+        <div class="grow"><span class="gml">Citas ag. / at.</span><span class="gmv" style="color:var(--g400)">0 / 0</span></div>
+        <div class="grow"><span class="gml">Contratos</span><span class="gmv" style="color:var(--g400)">0 / 0</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts row -->
+  <div class="cg2">
+    <div class="cc">
+      <div class="ct">Interesados portal vs CRM registrados por gerencia</div>
+      <div id="ch-ger"></div>
+    </div>
+    <div class="cc">
+      <div class="ct">Tasa de captura portal → CRM</div>
+      <div id="ch-cap"></div>
+    </div>
+  </div>
+
+  <div class="cg3">
+    <div class="cc">
+      <div class="ct">Citas — agendadas vs atendidas</div>
+      <div id="ch-citas"></div>
+    </div>
+    <div class="cc">
+      <div class="ct">Traspasos realizados en el período</div>
+      <div id="ch-trasp"></div>
+    </div>
+    <div class="cc">
+      <div class="ct">Leads portal por asesor (archivo)</div>
+      <div id="ch-asesor-portal"></div>
+    </div>
+  </div>
+
+  <!-- Citas table -->
+  <div class="sh">▸ Detalle de citas — 03 al 10 de abril 2026</div>
+  <div class="kr k3" style="margin-bottom:.875rem">
+    <div class="kc kgreen"><div class="kl">Total agendadas</div><div class="kv">13</div><div class="ks">Semana completa</div></div>
+    <div class="kc kgreen"><div class="kl">Citas atendidas</div><div class="kv">8</div><div class="ks">61.5% asistencia</div></div>
+    <div class="kc kamber"><div class="kl">No concretadas</div><div class="kv">5</div><div class="ks">38.5% cancelación</div></div>
+  </div>
+  <div class="tc">
+    <table><thead><tr>
+      <th>#</th><th>Asesor</th><th>Gerente / Gerencia</th><th>Fecha</th><th class="nr"># Cita</th><th>Tipo</th><th>Asistencia</th>
+    </tr></thead><tbody>
+      <tr><td class="mn">1</td><td class="tn">José Lozano</td><td><span class="bdg bv3">V3</span> Cesar Mercado</td><td class="mn">06 Abr</td><td class="nr"><span class="tag tg">1ª cita</span></td><td>Videollamada</td><td><span class="tag tg">SI ✓</span></td></tr>
+      <tr><td class="mn">2</td><td class="tn">Víctor García</td><td><span class="bdg bv1">V1</span> Víctor García</td><td class="mn">07 Abr</td><td class="nr"><span class="tag tg">1ª cita</span></td><td>Videollamada</td><td><span class="tag tg">SI ✓</span></td></tr>
+      <tr><td class="mn">3</td><td class="tn">Omar Moreno</td><td><span class="bdg bv2">V2</span> Omar Moreno</td><td class="mn">07 Abr</td><td class="nr"><span class="tag tneu">1ª cita</span></td><td>Presencial</td><td><span class="tag tr2">NO ✗</span></td></tr>
+      <tr><td class="mn">4</td><td class="tn">Samanta Lopez</td><td><span class="bdg bv3">V3</span> Cesar Mercado</td><td class="mn">07 Abr</td><td class="nr"><span class="tag tg">1ª cita</span></td><td>Inmueble</td><td><span class="tag tg">SI ✓</span></td></tr>
+      <tr><td class="mn">5</td><td class="tn">Michel Quintero</td><td><span class="bdg bv3">V3</span> Cesar Mercado</td><td class="mn">07 Abr</td><td class="nr"><span class="tag tg">1ª cita</span></td><td>Inmueble</td><td><span class="tag tg">SI ✓</span></td></tr>
+      <tr><td class="mn">6</td><td class="tn">Daniel Guerra</td><td><span class="bdg bv3">V3</span> L. Furlong</td><td class="mn">07 Abr</td><td class="nr"><span class="tag tg">1ª cita</span></td><td>Inmueble</td><td><span class="tag tg">SI ✓</span></td></tr>
+      <tr><td class="mn">7</td><td class="tn">Omar Moreno</td><td><span class="bdg bv2">V2</span> Omar Moreno</td><td class="mn">07 Abr</td><td class="nr"><span class="tag tneu">1ª cita</span></td><td>Presencial</td><td><span class="tag tr2">NO ✗</span></td></tr>
+      <tr><td class="mn">8</td><td class="tn">Vanessa Arias</td><td><span class="bdg bv1">V1</span> Víctor García</td><td class="mn">07 Abr</td><td class="nr"><span class="tag tneu">1ª cita</span></td><td>Presencial</td><td><span class="tag tr2">NO ✗</span></td></tr>
+      <tr><td class="mn">9</td><td class="tn">Michel Quintero</td><td><span class="bdg bv3">V3</span> Cesar Mercado</td><td class="mn">07 Abr</td><td class="nr"><span class="tag tg">1ª cita</span></td><td>Inmueble</td><td><span class="tag tg">SI ✓</span></td></tr>
+      <tr><td class="mn">10</td><td class="tn">Néstor Portilla</td><td><span class="bdg bv2">V2</span> Omar Moreno</td><td class="mn">08 Abr</td><td class="nr"><span class="tag ta">2ª cita</span></td><td>Presencial</td><td><span class="tag tr2">NO ✗</span></td></tr>
+      <tr><td class="mn">11</td><td class="tn">Carlos Pacheco</td><td><span class="bdg bv1">V1</span> Víctor García</td><td class="mn">08 Abr</td><td class="nr"><span class="tag ta">5ª cita</span></td><td>Presencial</td><td><span class="tag tr2">NO ✗</span></td></tr>
+      <tr><td class="mn">12</td><td class="tn">Néstor Portilla</td><td><span class="bdg bv2">V2</span> Omar Moreno</td><td class="mn">09 Abr</td><td class="nr"><span class="tag tg">1ª cita</span></td><td>Presencial</td><td><span class="tag tg">SI ✓</span></td></tr>
+      <tr><td class="mn">13</td><td class="tn">Néstor Portilla</td><td><span class="bdg bv2">V2</span> Omar Moreno</td><td class="mn">09 Abr</td><td class="nr"><span class="tag tg">1ª cita</span></td><td>Videollamada</td><td><span class="tag tg">SI ✓</span></td></tr>
+    </tbody></table>
+  </div>
+
+  <!-- Full asesor table -->
+  <div class="sh">▸ Ranking de asesores</div>
+  <div class="tc"><div class="tsc"><table>
+    <thead><tr>
+      <th>#</th><th>Asesor</th><th>Ger.</th>
+      <th class="nr">Portal (arch.)</th><th class="nr">CRM</th><th class="nr">T.env.</th>
+      <th class="nr">T.rec.</th><th class="nr">Pipeline</th>
+      <th class="nr">Citas ag.</th><th class="nr">Citas at.</th>
+      <th class="nr">Firmados</th><th class="nr">Pagados</th>
+    </tr></thead>
+    <tbody id="global-tbody"></tbody>
+  </table></div></div>
+
+</div><!-- /gen -->
+
+
+<!-- ══════════ V1 ══════════ -->
+<div class="view" id="view-v1">
+  <div class="sh sh-colored" style="border-color:var(--v1);color:var(--v1)">Ventas 1 — Víctor Manuel García Bautista</div>
+  <div class="al al-blue"><span class="al-ico">ℹ️</span><div><strong>Captadores de leads nuevos:</strong> Esta semana aparecen en CRM como "traspasado por" varios asesores captadores de V1 (Bryan Alejandro Romero Gross, Lizbeth Méndez Castro, Nicolás Álvarez Parra, Jenifer Ramos Rodríguez, José Alfredo Jiménez Teodoro, Lesly Madariaga Rojas) que distribuyen leads al equipo. Sus traspasos: 7 → Michel Quintero (V3), 3 → asesores V1, 2 → V2, 2 → V4. En total V1 envió 18 traspasos.</div></div>
+  <div class="kr k4">
+    <div class="kc kblue"><div class="kl">Interesados portal</div><div class="kv" style="color:var(--v1)">118</div><div class="ks">⚠ Solo 5 días activos</div></div>
+    <div class="kc kblue"><div class="kl">Leads CRM</div><div class="kv" style="color:var(--v1)">19</div><div class="ks">16.1% de portal</div><div class="kbdg bwarn">Captura baja</div></div>
+    <div class="kc kgreen"><div class="kl">Citas ag. / at.</div><div class="kv" style="color:var(--v2)">4 / 3</div><div class="ks">75.0% asistencia</div></div>
+    <div class="kc kgray"><div class="kl">Contratos</div><div class="kv" style="color:var(--g400)">0 / 0</div></div>
+  </div>
+  <div class="fn-card">
+    <div class="fn-title">Funnel Ventas 1</div>
+    <div class="fn-steps">
+      <div class="fns"><div class="fl">Portal</div><div class="fval" style="color:var(--v1)">118</div><div class="fpct" style="color:var(--g500)">100%</div><div class="fbar"><div class="fbar-f" style="width:100%;background:var(--v1)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">CRM</div><div class="fval" style="color:var(--amber)">19</div><div class="fpct" style="color:var(--amber)">16.1%</div><div class="fbar"><div class="fbar-f" style="width:16.1%;background:var(--amber)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">Traspasos env.</div><div class="fval" style="color:var(--red)">−18</div><div class="fpct" style="color:var(--red)">a V2/V3/V4</div><div class="fbar"><div class="fbar-f" style="width:50%;background:var(--red)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">Citas ag.</div><div class="fval" style="color:var(--v2)">4</div><div class="fpct" style="color:var(--v2)">21.1% de CRM</div><div class="fbar"><div class="fbar-f" style="width:21.1%;background:var(--v2)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">Citas at.</div><div class="fval" style="color:var(--v2)">3</div><div class="fpct" style="color:var(--v2)">75.0%</div><div class="fbar"><div class="fbar-f" style="width:75%;background:var(--v2)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">Firmados</div><div class="fval" style="color:var(--g400)">0</div><div class="fpct" style="color:var(--g400)">—</div><div class="fbar"><div class="fbar-f" style="width:0%;background:var(--g300)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">Pagados</div><div class="fval" style="color:var(--g400)">0</div><div class="fpct" style="color:var(--g400)">—</div><div class="fbar"><div class="fbar-f" style="width:0%;background:var(--g300)"></div></div></div>
+    </div>
+  </div>
+  <div class="tc"><div class="tsc"><table>
+    <thead><tr><th>Asesor</th><th class="nr">Portal</th><th class="nr">CRM</th><th class="nr">Cap.%</th><th class="nr">T.env.</th><th class="nr">T.rec.</th><th class="nr">Pipeline</th><th class="nr">Citas ag.</th><th class="nr">Citas at.</th><th class="nr">Firmados</th></tr></thead>
+    <tbody id="v1-tbody"></tbody>
+  </table></div></div>
+</div>
+
+
+<!-- ══════════ V2 ══════════ -->
+<div class="view" id="view-v2">
+  <div class="sh sh-colored" style="border-color:var(--v2);color:var(--v2)">Ventas 2 — Manuel Omar Moreno Zapata</div>
+  <div class="al al-amber"><span class="al-ico">⚠️</span><div><strong>Conversión a citas muy baja:</strong> V2 tiene 137 interesados del portal y 27 en CRM, pero solo 5 citas agendadas (18.5% de CRM) con 2 atendidas (40% asistencia). Omar Moreno tuvo 2 citas y las 2 no se concretaron. Néstor Portilla agendó 3 y convirtió 2.</div></div>
+  <div class="kr k4">
+    <div class="kc kgreen"><div class="kl">Interesados portal</div><div class="kv" style="color:var(--v2)">137</div><div class="ks">⚠ Solo 5 días activos</div></div>
+    <div class="kc kgreen"><div class="kl">Leads CRM</div><div class="kv" style="color:var(--v2)">27</div><div class="ks">19.7% de portal</div></div>
+    <div class="kc kamber"><div class="kl">Citas ag. / at.</div><div class="kv" style="color:var(--amber)">5 / 2</div><div class="ks">40.0% asistencia ⚠</div></div>
+    <div class="kc kgray"><div class="kl">Contratos</div><div class="kv" style="color:var(--g400)">0 / 0</div></div>
+  </div>
+  <div class="fn-card">
+    <div class="fn-title">Funnel Ventas 2</div>
+    <div class="fn-steps">
+      <div class="fns"><div class="fl">Portal</div><div class="fval" style="color:var(--v2)">137</div><div class="fpct" style="color:var(--g500)">100%</div><div class="fbar"><div class="fbar-f" style="width:100%;background:var(--v2)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">CRM</div><div class="fval" style="color:var(--v2)">27</div><div class="fpct" style="color:var(--amber)">19.7%</div><div class="fbar"><div class="fbar-f" style="width:19.7%;background:var(--v2)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">Pipeline neto</div><div class="fval" style="color:var(--v2)">26</div><div class="fpct" style="color:var(--g500)">−1 trasp.env.</div><div class="fbar"><div class="fbar-f" style="width:96%;background:var(--v2)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">Citas ag.</div><div class="fval" style="color:var(--v2)">5</div><div class="fpct" style="color:var(--v2)">18.5% de CRM</div><div class="fbar"><div class="fbar-f" style="width:18.5%;background:var(--v2)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">Citas at.</div><div class="fval" style="color:var(--amber)">2</div><div class="fpct" style="color:var(--red)">40.0% ⚠</div><div class="fbar"><div class="fbar-f" style="width:40%;background:var(--amber)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">Firmados</div><div class="fval" style="color:var(--g400)">0</div><div class="fpct" style="color:var(--g400)">—</div><div class="fbar"><div class="fbar-f" style="width:0%;background:var(--g300)"></div></div><span class="farr">›</span></div>
+      <div class="fns"><div class="fl">Pagados</div><div class="fval" style="color:var(--g400)">0</div><div class="fpct" style="color:var(--g400)">—</div><div class="fbar"><div class="fbar-f" style="width:0%;background:var(--g300)"></div></div></div>
+    </div>
+  </div>
+  <div class="tc"><div class="tsc"><table>
+    <thead><tr><th>Asesor</th><th class="nr">Portal</th><th class="nr">CRM</th><th class="nr">T.env.</th><th class="nr">T.rec.</th><th class="nr">Pipeline</th><th class="nr">Citas ag.</th><th class="nr">Citas at.</th><th class="nr">Firmados</th></tr></thead>
+    <tbody id="v2-tbody"></tbody>
+  </table></div></div>
+</div>
+
+
+<!-- ══════════ V3 ══════════ -->
+<div class="view" id="view-v3">
+  <div class="sh sh-colored" style="border-color:var(--v3);color:var(--v3)">Ventas 3 — César Mercado / Leonardo Furlong</div>
+  <div class="al al-green"><span class="al-ico">✅</span><div><strong>Mejor tasa de asistencia:</strong> V3 logró 4 citas agendadas con 3 atendidas (75%). Michel Quintero tuvo 2 citas (ambas en inmueble, ambas atendidas). José Lozano y Daniel Guerra también convirtieron. Recibieron 8 traspasos desde V1.</div></div>
+  <div class="kr k4">
+    <div class="kc kpurple"><div class="kl">Interesados portal</div><div class="kv" style="color:var(--v3)">54</div><div class="ks">⚠ Solo 5 días activos</div></div>
+    <div class="kc kpurple"><div class="kl">CRM propio</div><div class="kv" style="color:var(--v3)">14</div><div class="ks">25.9% de portal</div></div>
+    <div class="kc kpurple"><div class="kl">Pipeline c/traspasos</div><div class="kv" style="color:var(--v3)">22</div><div class="ks">+8 recibidos de V1</div></div>
+    <div class="kc kgreen"><div class="kl">Citas ag. / at.</div><div class="kv" style="color:var(--v2)">4 / 3</div><div class="ks">75% — mejor del equipo</div></div>
+  </div>
+  <div class="tc"><div class="tsc"><table>
+    <thead><tr><th>Asesor</th><th class="nr">Portal</th><th class="nr">CRM</th><th class="nr">T.rec.</th><th class="nr">Pipeline</th><th class="nr">Citas ag.</th><th class="nr">Citas at.</th><th class="nr">Firmados</th></tr></thead>
+    <tbody id="v3-tbody"></tbody>
+  </table></div></div>
+</div>
+
+
+<!-- ══════════ V4 ══════════ -->
+<div class="view" id="view-v4">
+  <div class="sh sh-colored" style="border-color:var(--v4);color:var(--v4)">Ventas 4 — Domingo Infante</div>
+  <div class="al al-red"><span class="al-ico">🔴</span><div><strong>Sin citas esta semana:</strong> V4 tuvo 33 interesados del portal y 5 leads en CRM (incluye 3 traspasos recibidos de V1), pero 0 citas agendadas. Andrés Medina y Laura Patricia recibieron traspasos pero no generaron actividad visible en citas. Requiere atención del gerente.</div></div>
+  <div class="kr k4">
+    <div class="kc korange"><div class="kl">Interesados portal</div><div class="kv" style="color:var(--v4)">33</div><div class="ks">⚠ Solo 5 días activos</div></div>
+    <div class="kc korange"><div class="kl">Leads CRM</div><div class="kv" style="color:var(--v4)">5</div><div class="ks">2 propios + 3 traspasos</div></div>
+    <div class="kc kred"><div class="kl">Citas agendadas</div><div class="kv" style="color:var(--red)">0</div><div class="ks">Sin actividad ⚠</div></div>
+    <div class="kc kgray"><div class="kl">Contratos</div><div class="kv" style="color:var(--g400)">0 / 0</div></div>
+  </div>
+  <div class="tc"><div class="tsc"><table>
+    <thead><tr><th>Asesor</th><th class="nr">Portal</th><th class="nr">CRM</th><th class="nr">T.rec.</th><th class="nr">Pipeline</th><th class="nr">Citas ag.</th><th class="nr">Firmados</th></tr></thead>
     <tbody>
-      <tr><td>1</td><td class="an">Michel Quintero</td><td>Cesar Mercado</td><td><span class="gb gv3">V3</span></td><td class="nr">27 Mar</td><td>Presencial</td><td class="cs">SI ✓</td></tr>
-      <tr><td>2</td><td class="an">Orlando Palacios</td><td>Víctor García</td><td><span class="gb gv1">V1</span></td><td class="nr">27 Mar</td><td>Videollamada</td><td class="cn">NO ✗</td></tr>
-      <tr><td>3</td><td class="an" style="color:var(--g4);font-style:italic">Denisse Hansen</td><td>MKT</td><td><span class="gb gmkt">MKT</span></td><td class="nr">27 Mar</td><td>Videollamada</td><td class="cs">SI ✓</td></tr>
-      <tr><td>4</td><td class="an">Vanessa Arias</td><td>Víctor García</td><td><span class="gb gv1">V1</span></td><td class="nr">28 Mar</td><td>Presencial</td><td class="cs">SI ✓</td></tr>
-      <tr><td>5</td><td class="an">Karla Rentería</td><td>Daniel Rojas</td><td><span class="gb gdir">DIR</span></td><td class="nr">30 Mar</td><td>Presencial</td><td class="cs">SI ✓</td></tr>
-      <tr><td>6</td><td class="an">Orlando Palacios</td><td>Víctor García</td><td><span class="gb gv1">V1</span></td><td class="nr">30 Mar</td><td>Presencial</td><td class="cn">NO ✗</td></tr>
-      <tr><td>7</td><td class="an">Arturo González</td><td>Víctor García</td><td><span class="gb gv1">V1</span></td><td class="nr">31 Mar</td><td>Videollamada</td><td class="cs">SI ✓</td></tr>
-      <tr><td>8</td><td class="an">Samanta Lopez</td><td>Cesar Mercado</td><td><span class="gb gv3">V3</span></td><td class="nr">31 Mar</td><td>Presencial</td><td class="cs">SI ✓</td></tr>
-      <tr><td>9</td><td class="an">Vanessa Arias</td><td>Víctor García</td><td><span class="gb gv1">V1</span></td><td class="nr">31 Mar</td><td>Presencial</td><td class="cn">NO ✗</td></tr>
-      <tr><td>10</td><td class="an">Yolanda Rojas</td><td>Omar Moreno</td><td><span class="gb gv2">V2</span></td><td class="nr">01 Abr</td><td>Presencial</td><td class="cs">SI ✓</td></tr>
-      <tr><td>11</td><td class="an">Orlando Palacios</td><td>Víctor García</td><td><span class="gb gv1">V1</span></td><td class="nr">01 Abr</td><td>Videollamada</td><td class="cs">SI ✓</td></tr>
-      <tr><td>12</td><td class="an">Vanessa Arias</td><td>Víctor García</td><td><span class="gb gv1">V1</span></td><td class="nr">01 Abr</td><td>Videollamada</td><td class="cs">SI ✓</td></tr>
-    </tbody></table></div>
-  </div><!-- /gen -->
+      <tr><td class="tn">Andrés Medina</td><td class="nr mn">2</td><td class="nr mn">2</td><td class="nr mn" style="color:var(--v4)">+2</td><td class="nr mn">4</td><td class="nr mn" style="color:var(--red)">0</td><td class="nr mn" style="color:var(--g400)">0</td></tr>
+      <tr><td class="tn">Domingo Infante</td><td class="nr mn">—</td><td class="nr mn">2</td><td class="nr mn" style="color:var(--v4)">+1</td><td class="nr mn">3</td><td class="nr mn" style="color:var(--red)">0</td><td class="nr mn" style="color:var(--g400)">0</td></tr>
+      <tr><td class="tn">Laura Patricia</td><td class="nr mn">—</td><td class="nr mn">1</td><td class="nr mn" style="color:var(--v4)">+1</td><td class="nr mn">2</td><td class="nr mn" style="color:var(--red)">0</td><td class="nr mn" style="color:var(--g400)">0</td></tr>
+      <tr class="sub"><td>TOTAL V4</td><td class="nr mn">2</td><td class="nr mn">5</td><td class="nr mn" style="color:var(--v4)">+4</td><td class="nr mn">9</td><td class="nr mn" style="color:var(--red)">0</td><td class="nr mn" style="color:var(--g400)">0</td></tr>
+    </tbody>
+  </table></div></div>
+</div>
 
 
-  <!-- ══════════════ V1 ══════════════ -->
-  <div class="view" id="view-v1">
-    <div class="sec" style="color:var(--teal)">Ventas 1 — Víctor Manuel García Bautista</div>
-    <div class="krow">
-      <div class="k ct"><div class="kl">Leads del portal</div><div class="kv">142</div><div class="ks">Cuenta Ventas 1</div></div>
-      <div class="k ca"><div class="kl">Leads en CRM</div><div class="kv">104</div><div class="ks">73.2% captura</div></div>
-      <div class="k cg"><div class="kl">Citas agendadas</div><div class="kv">7</div><div class="ks">4.9% de portal</div></div>
-      <div class="k cg"><div class="kl">Citas atendidas</div><div class="kv">4</div><div class="ks">57.1% asistencia</div></div>
-      <div class="k cz"><div class="kl">Contratos firmados</div><div class="kv">0</div></div>
-      <div class="k cz"><div class="kl">Contratos pagados</div><div class="kv">0</div></div>
-    </div>
-    <div class="sec">Funnel Ventas 1</div>
-    <div class="fn">
-      <div class="fs"><div class="fl">Leads del portal</div><div class="fv" style="color:var(--teal)">142</div><div class="fc fcn">100%</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Registrados CRM</div><div class="fv" style="color:#facc15">104</div><div class="fc fcw">73.2%</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Citas agendadas</div><div class="fv" style="color:#4ade80">7</div><div class="fc fct">6.7% de CRM</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Citas atendidas</div><div class="fv" style="color:#4ade80">4</div><div class="fc fct">57.1%</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Contratos firmados</div><div class="fv" style="color:#252525">0</div><div class="fc fcz">—</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Contratos pagados</div><div class="fv" style="color:#252525">0</div><div class="fc fcz">—</div></div>
-    </div>
-    <div class="info"><strong>Traspasos enviados desde V1 a V3:</strong> Alberto Cortés envió 5 leads, Roseyra Díaz 2, Arturo González 1, Astrid C. Medina Lima 1 → todos a Leonardo Furlong. Total: 9 leads salieron de V1.</div>
-    <div class="sec">Asesores Ventas 1</div>
-    <div class="tw"><table>
-      <thead><tr><th>Asesor</th><th class="nr">Portal</th><th class="nr">CRM</th><th class="nr">Cap.%</th><th class="nr">Trasp. env.</th><th class="nr">Citas ag.</th><th class="nr">Citas at.</th><th class="nr">Contratos</th></tr></thead>
-      <tbody>
-        <tr><td class="an">Víctor García</td><td class="nr">24</td><td class="nr">—</td><td class="nr"><span class="pi pr">0%</span></td><td class="nr" style="color:#252525">—</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Celia Martínez</td><td class="nr">24</td><td class="nr">—</td><td class="nr"><span class="pi pr">0%</span></td><td class="nr" style="color:#252525">—</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Remedios Hernández</td><td class="nr">16</td><td class="nr">26</td><td class="nr"><span class="pi pg">163%*</span></td><td class="nr" style="color:#252525">—</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Vanessa Arias</td><td class="nr">15</td><td class="nr">—</td><td class="nr"><span class="pi pr">0%</span></td><td class="nr" style="color:#252525">—</td><td class="nr">3</td><td class="nr">2</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Claudia Calderón</td><td class="nr">14</td><td class="nr">—</td><td class="nr"><span class="pi pr">0%</span></td><td class="nr" style="color:#252525">—</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Arturo González</td><td class="nr">14</td><td class="nr">12</td><td class="nr"><span class="pi pm">86%</span></td><td class="nr" style="color:#f87171">-1</td><td class="nr">1</td><td class="nr">1</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Roseyra Díaz</td><td class="nr">13</td><td class="nr">8</td><td class="nr"><span class="pi pm">62%</span></td><td class="nr" style="color:#f87171">-2</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Alberto Cortés</td><td class="nr">12</td><td class="nr">38</td><td class="nr"><span class="pi pg">317%*</span></td><td class="nr" style="color:#f87171">-5</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Mauricio Escalante</td><td class="nr">7</td><td class="nr">19</td><td class="nr"><span class="pi pg">271%*</span></td><td class="nr" style="color:#252525">—</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Martín Naranjo</td><td class="nr">3</td><td class="nr">—</td><td class="nr"><span class="pi pr">0%</span></td><td class="nr" style="color:#252525">—</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Orlando Palacios</td><td class="nr">—</td><td class="nr">1</td><td class="nr pz">—</td><td class="nr" style="color:#252525">—</td><td class="nr">3</td><td class="nr">1</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an" style="color:var(--g4);font-size:11px">Astrid C. Medina Lima</td><td class="nr" style="color:var(--g4)">—</td><td class="nr" style="color:var(--g4)">—</td><td class="nr pz">—</td><td class="nr" style="color:#f87171">-1</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr style="background:#0d0d0d"><td style="font-weight:600;color:var(--teal)">TOTAL V1</td><td class="nr" style="font-weight:600;color:var(--teal)">142</td><td class="nr" style="font-weight:600">104</td><td class="nr"><span class="pi pm">73.2%</span></td><td class="nr" style="font-weight:600;color:#f87171">-9</td><td class="nr" style="font-weight:600;color:#4ade80">7</td><td class="nr" style="font-weight:600;color:#4ade80">4</td><td class="nr" style="color:#252525">0</td></tr>
-      </tbody>
-    </table></div>
-    <p style="font-size:10px;color:#333;margin-top:5px">* % &gt;100 indica leads de períodos anteriores capturados en CRM durante esta semana.</p>
-  </div><!-- /v1 -->
-
-
-  <!-- ══════════════ V2 ══════════════ -->
-  <div class="view" id="view-v2">
-    <div class="sec" style="color:#5BA3D9">Ventas 2 — Manuel Omar Moreno Zapata</div>
-    <div class="krow">
-      <div class="k ct"><div class="kl">Leads del portal</div><div class="kv">205</div><div class="ks">Cuenta Premium</div></div>
-      <div class="k cg"><div class="kl">Leads en CRM</div><div class="kv">194</div><div class="ks">94.6% — mejor captura</div></div>
-      <div class="k ca"><div class="kl">Citas agendadas</div><div class="kv">1</div><div class="ks">0.5% de portal ⚠</div></div>
-      <div class="k cg"><div class="kl">Citas atendidas</div><div class="kv">1</div><div class="ks">100% asistencia</div></div>
-      <div class="k cz"><div class="kl">Contratos firmados</div><div class="kv">0</div></div>
-      <div class="k cz"><div class="kl">Contratos pagados</div><div class="kv">0</div></div>
-    </div>
-    <div class="sec">Funnel Ventas 2</div>
-    <div class="fn">
-      <div class="fs"><div class="fl">Leads del portal</div><div class="fv" style="color:#5BA3D9">205</div><div class="fc fcn">100%</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Registrados CRM</div><div class="fv" style="color:var(--teal)">194</div><div class="fc fct">94.6% ✓</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Citas agendadas</div><div class="fv" style="color:#facc15">1</div><div class="fc fcw">0.5% ⚠</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Citas atendidas</div><div class="fv" style="color:#4ade80">1</div><div class="fc fct">100%</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Contratos firmados</div><div class="fv" style="color:#252525">0</div><div class="fc fcz">—</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Contratos pagados</div><div class="fv" style="color:#252525">0</div><div class="fc fcz">—</div></div>
-    </div>
-    <div class="alert"><strong>Mayor volumen, menor conversión a citas:</strong> V2 tiene 205 leads de portal y 194 en CRM, pero solo 1 cita agendada (0.5%). Además envió 52 traspasos a V3. Es la brecha de conversión más importante del equipo.</div>
-    <div class="sec">Asesores Ventas 2</div>
-    <div class="tw"><table>
-      <thead><tr><th>Asesor</th><th class="nr">Portal</th><th class="nr">CRM</th><th class="nr">Trasp. env.</th><th class="nr">Pipeline neto</th><th class="nr">Citas ag.</th><th class="nr">Citas at.</th><th class="nr">Contratos</th></tr></thead>
-      <tbody>
-        <tr><td class="an">Yolanda Rojas</td><td class="nr">50</td><td class="nr">101</td><td class="nr" style="color:#f87171">-27</td><td class="nr" style="font-weight:600">74</td><td class="nr">1</td><td class="nr">1</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Néstor Portilla</td><td class="nr">44</td><td class="nr">34</td><td class="nr" style="color:#252525">—</td><td class="nr">34</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Valentina Salgado</td><td class="nr">42</td><td class="nr">14</td><td class="nr" style="color:#f87171">-12</td><td class="nr">2</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Francisco Llorens</td><td class="nr">33</td><td class="nr">34</td><td class="nr" style="color:#f87171">-2</td><td class="nr">32</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Carmina Bolaños</td><td class="nr">26</td><td class="nr">11</td><td class="nr" style="color:#f87171">-1</td><td class="nr">10</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Omar Moreno</td><td class="nr">10</td><td class="nr">—</td><td class="nr" style="color:#252525">—</td><td class="nr">—</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr style="background:#0d0d0d"><td style="font-weight:600;color:#5BA3D9">TOTAL V2</td><td class="nr" style="font-weight:600;color:#5BA3D9">205</td><td class="nr" style="font-weight:600">194</td><td class="nr" style="font-weight:600;color:#f87171">-42</td><td class="nr" style="font-weight:600">152</td><td class="nr" style="font-weight:600;color:#facc15">1</td><td class="nr" style="font-weight:600;color:#4ade80">1</td><td class="nr" style="color:#252525">0</td></tr>
-      </tbody>
-    </table></div>
-    <p style="font-size:10px;color:#333;margin-top:5px">* Yolanda Rojas: 101 en CRM vs 50 en portal — está capturando leads de periodos anteriores.</p>
-  </div><!-- /v2 -->
-
-
-  <!-- ══════════════ V3 ══════════════ -->
-  <div class="view" id="view-v3">
-    <div class="sec" style="color:#aaa">Ventas 3 — Cesar Mercado / Leonardo Furlong</div>
-    <div class="krow" style="grid-template-columns:repeat(6,minmax(0,1fr))">
-      <div class="k ct"><div class="kl">Leads del portal</div><div class="kv">43</div><div class="ks">Cuenta Classic A</div></div>
-      <div class="k ca"><div class="kl">CRM propio</div><div class="kv">29</div><div class="ks">67.4% de portal</div></div>
-      <div class="k ct"><div class="kl">Pipeline total</div><div class="kv">80</div><div class="ks">29 + 51 traspasos</div></div>
-      <div class="k cg"><div class="kl">Citas agendadas</div><div class="kv">2</div><div class="ks">4.7% de portal</div></div>
-      <div class="k cg"><div class="kl">Citas atendidas</div><div class="kv">2</div><div class="ks">100% asistencia</div></div>
-      <div class="k cz"><div class="kl">Contratos</div><div class="kv">0/0</div></div>
-    </div>
-    <div class="sec">Funnel Ventas 3</div>
-    <div class="fn">
-      <div class="fs"><div class="fl">Leads del portal</div><div class="fv" style="color:#aaa">43</div><div class="fc fcn">propios</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">CRM + traspasos</div><div class="fv" style="color:var(--teal)">80</div><div class="fc fct">29 + 51</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Citas agendadas</div><div class="fv" style="color:#4ade80">2</div><div class="fc fct">4.7%</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Citas atendidas</div><div class="fv" style="color:#4ade80">2</div><div class="fc fct">100%</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Contratos firmados</div><div class="fv" style="color:#252525">0</div><div class="fc fcz">—</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Contratos pagados</div><div class="fv" style="color:#252525">0</div><div class="fc fcz">—</div></div>
-    </div>
-    <div class="info"><strong>Traspasos recibidos (51 en pipeline de Furlong):</strong> Yolanda Rojas (27), Valentina Salgado (12), Alberto Cortés (5), Roseyra Díaz (2), Carmina (1), Arturo González (1), F. Llorens (1), Astrid V1 (1), auto (1). Mejor tasa de asistencia del equipo: 100%.</div>
-    <div class="sec">Asesores Ventas 3</div>
-    <div class="tw"><table>
-      <thead><tr><th>Asesor</th><th class="nr">Portal</th><th class="nr">CRM propio</th><th class="nr">Trasp. recib.</th><th class="nr">Pipeline</th><th class="nr">Citas ag.</th><th class="nr">Citas at.</th><th class="nr">Contratos</th></tr></thead>
-      <tbody>
-        <tr><td class="an">Alejandro Mojica</td><td class="nr">34</td><td class="nr">14</td><td class="nr" style="color:#252525">—</td><td class="nr">14</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Leonardo Furlong</td><td class="nr">9</td><td class="nr">—</td><td class="nr" style="color:var(--teal)">+51</td><td class="nr" style="color:var(--teal);font-weight:600">51</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Samantha Lopez</td><td class="nr">—</td><td class="nr">13</td><td class="nr" style="color:var(--teal)">+1</td><td class="nr">14</td><td class="nr">1</td><td class="nr">1</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Paulette Magny</td><td class="nr">—</td><td class="nr">2</td><td class="nr" style="color:#252525">—</td><td class="nr">2</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Michel Quintero</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">—</td><td class="nr">—</td><td class="nr">1</td><td class="nr">1</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Cesar Mercado</td><td class="nr">—</td><td class="nr">1</td><td class="nr" style="color:var(--teal)">+1</td><td class="nr">2</td><td class="nr">—</td><td class="nr">—</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr style="background:#0d0d0d"><td style="font-weight:600;color:#aaa">TOTAL V3</td><td class="nr" style="font-weight:600;color:#aaa">43</td><td class="nr" style="font-weight:600">29</td><td class="nr" style="font-weight:600;color:var(--teal)">+52</td><td class="nr" style="font-weight:600;color:var(--teal)">80</td><td class="nr" style="font-weight:600;color:#4ade80">2</td><td class="nr" style="font-weight:600;color:#4ade80">2</td><td class="nr" style="color:#252525">0</td></tr>
-      </tbody>
-    </table></div>
-  </div><!-- /v3 -->
-
-
-  <!-- ══════════════ V4 ══════════════ -->
-  <div class="view" id="view-v4">
-    <div class="sec" style="color:#f87171">Ventas 4 — Domingo Infante</div>
-    <div class="krow">
-      <div class="k cr"><div class="kl">Leads del portal</div><div class="kv">26</div><div class="ks">Cuenta Ventas 4</div></div>
-      <div class="k cz"><div class="kl">Leads en CRM</div><div class="kv">0</div><div class="ks">0.0% captura ✗</div></div>
-      <div class="k cz"><div class="kl">Citas agendadas</div><div class="kv">0</div></div>
-      <div class="k cz"><div class="kl">Citas atendidas</div><div class="kv">0</div></div>
-      <div class="k cz"><div class="kl">Contratos firmados</div><div class="kv">0</div></div>
-      <div class="k cz"><div class="kl">Contratos pagados</div><div class="kv">0</div></div>
-    </div>
-    <div class="alert"><strong>Alerta crítica — sin registro en CRM:</strong> 26 leads del portal esta semana, 0 capturados en CRM. Andrés Medina: 14 leads, Domingo Infante: 6, Griselda Vergara: 6. Sin registro no hay seguimiento, no hay citas, no hay posibilidad de cierre. Requiere atención inmediata.</div>
-    <div class="sec">Funnel Ventas 4</div>
-    <div class="fn">
-      <div class="fs"><div class="fl">Leads del portal</div><div class="fv" style="color:#f87171">26</div><div class="fc fcn">100%</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Registrados CRM</div><div class="fv" style="color:#252525">0</div><div class="fc" style="color:#f87171">0.0% ✗</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Citas agendadas</div><div class="fv" style="color:#252525">0</div><div class="fc fcz">—</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Citas atendidas</div><div class="fv" style="color:#252525">0</div><div class="fc fcz">—</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Contratos firmados</div><div class="fv" style="color:#252525">0</div><div class="fc fcz">—</div><span class="fa">›</span></div>
-      <div class="fs"><div class="fl">Contratos pagados</div><div class="fv" style="color:#252525">0</div><div class="fc fcz">—</div></div>
-    </div>
-    <div class="sec">Asesores Ventas 4</div>
-    <div class="tw"><table>
-      <thead><tr><th>Asesor</th><th class="nr">Portal</th><th class="nr">CRM</th><th class="nr">Captura %</th><th class="nr">Citas</th><th class="nr">Contratos</th></tr></thead>
-      <tbody>
-        <tr><td class="an">Andrés Medina</td><td class="nr" style="color:#f87171">14</td><td class="nr" style="color:#252525">0</td><td class="nr"><span class="pi pr">0% ✗</span></td><td class="nr" style="color:#252525">0</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Domingo Infante</td><td class="nr" style="color:#f87171">6</td><td class="nr" style="color:#252525">0</td><td class="nr"><span class="pi pr">0% ✗</span></td><td class="nr" style="color:#252525">0</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr><td class="an">Griselda Vergara</td><td class="nr" style="color:#f87171">6</td><td class="nr" style="color:#252525">0</td><td class="nr"><span class="pi pr">0% ✗</span></td><td class="nr" style="color:#252525">0</td><td class="nr" style="color:#252525">0</td></tr>
-        <tr style="background:#0d0d0d"><td style="font-weight:600;color:#f87171">TOTAL V4</td><td class="nr" style="font-weight:600;color:#f87171">26</td><td class="nr" style="font-weight:600;color:#252525">0</td><td class="nr"><span class="pi pr">0% ✗</span></td><td class="nr" style="color:#252525">0</td><td class="nr" style="color:#252525">0</td></tr>
-      </tbody>
-    </table></div>
-  </div><!-- /v4 -->
-
-
-  <!-- ══════════════ POR ASESOR ══════════════ -->
-  <div class="view" id="view-ases">
-    <div class="sec">Ranking general de asesores</div>
-    <div class="tw" style="margin-bottom:1.25rem"><table>
-      <thead><tr><th>#</th><th>Asesor</th><th>Ger.</th><th class="nr">Portal</th><th class="nr">CRM</th><th class="nr">Cap.%</th><th class="nr">Trasp.env.</th><th class="nr">Trasp.rec.</th><th class="nr">Pipeline</th><th class="nr">Citas ag.</th><th class="nr">Citas at.</th><th class="nr">Conv.p→c</th></tr></thead>
-      <tbody id="ases-tbody"></tbody>
-    </table></div>
-    <div id="ases-det" style="display:none">
-      <div class="sec" id="ases-dtl">Detalle asesor</div>
-      <div id="ases-fn" class="fn" style="margin-bottom:1.5rem"></div>
-    </div>
-  </div><!-- /ases -->
+<!-- ══════════ COMPARATIVA ══════════ -->
+<div class="view" id="view-compare">
+  <div class="sh">Comparativa — <span id="cmp-title" style="color:var(--teal)"></span></div>
+  <div id="cmp-kpis" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:1.25rem"></div>
+  <div class="cg2">
+    <div class="cc"><div class="ct">Leads del portal (archivo)</div><div id="cmp-portal"></div></div>
+    <div class="cc"><div class="ct">Leads en CRM</div><div id="cmp-crm"></div></div>
+  </div>
+  <div class="cg2">
+    <div class="cc"><div class="ct">Pipeline neto</div><div id="cmp-pipeline"></div></div>
+    <div class="cc"><div class="ct">Citas agendadas vs atendidas</div><div id="cmp-citas"></div></div>
+  </div>
+</div>
 
 </div><!-- /wrap -->
 
 <div class="ftr">
   <span class="fb">ALTALTIUM REAL ESTATE SOLUTIONS · LA LLAVE DE TU FUTURO</span>
-  <span class="ft">KPI 27 Mar – 03 Abr 2026 · Uso interno ejecutivo · Gerente de Marketing: Denisse Hansen</span>
+  <span class="fs">Panel KPI Ejecutivo · 03–10 Abr 2026 · Gerente de Marketing: Denisse Hansen</span>
 </div>
 
 <script>
-// ── DATA (verified) ───────────────────────────────────────────────
-const ASES = [
-  {n:"Yolanda Rojas",      g:"V2",gc:"gv2",portal:50, crm:101,to:27,ti:0,  cag:1,cat:1,cont:0},
-  {n:"Leonardo Furlong",   g:"V3",gc:"gv3",portal:9,  crm:0,  to:1, ti:51, cag:0,cat:0,cont:0},
-  {n:"Alberto Cortés",     g:"V1",gc:"gv1",portal:12, crm:38, to:5, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Néstor Portilla",    g:"V2",gc:"gv2",portal:44, crm:34, to:0, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Francisco Llorens",  g:"V2",gc:"gv2",portal:33, crm:34, to:2, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Remedios Hernández", g:"V1",gc:"gv1",portal:16, crm:26, to:0, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Mauricio Escalante", g:"V1",gc:"gv1",portal:7,  crm:19, to:0, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Alejandro Mojica",   g:"V3",gc:"gv3",portal:34, crm:14, to:0, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Valentina Salgado",  g:"V2",gc:"gv2",portal:42, crm:13, to:12,ti:0,  cag:0,cat:0,cont:0},
-  {n:"Samantha Lopez",     g:"V3",gc:"gv3",portal:0,  crm:13, to:0, ti:1,  cag:1,cat:1,cont:0},
-  {n:"Arturo González",    g:"V1",gc:"gv1",portal:14, crm:12, to:1, ti:0,  cag:1,cat:1,cont:0},
-  {n:"Carmina Bolaños",    g:"V2",gc:"gv2",portal:26, crm:11, to:1, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Roseyra Díaz",       g:"V1",gc:"gv1",portal:13, crm:8,  to:2, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Vanessa Arias",      g:"V1",gc:"gv1",portal:15, crm:0,  to:0, ti:0,  cag:3,cat:2,cont:0},
-  {n:"Claudia Calderón",   g:"V1",gc:"gv1",portal:14, crm:0,  to:0, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Celia Martínez",     g:"V1",gc:"gv1",portal:24, crm:0,  to:0, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Víctor García",      g:"V1",gc:"gv1",portal:24, crm:0,  to:0, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Andrés Medina",      g:"V4",gc:"gv4",portal:14, crm:0,  to:0, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Omar Moreno",        g:"V2",gc:"gv2",portal:10, crm:0,  to:0, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Domingo Infante",    g:"V4",gc:"gv4",portal:6,  crm:0,  to:0, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Griselda Vergara",   g:"V4",gc:"gv4",portal:6,  crm:0,  to:0, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Martín Naranjo",     g:"V1",gc:"gv1",portal:3,  crm:0,  to:0, ti:0,  cag:0,cat:0,cont:0},
-  {n:"Orlando Palacios",   g:"V1",gc:"gv1",portal:0,  crm:1,  to:0, ti:0,  cag:3,cat:1,cont:0},
-  {n:"Michel Quintero",    g:"V3",gc:"gv3",portal:0,  crm:0,  to:0, ti:0,  cag:1,cat:1,cont:0},
-  {n:"Paulette Magny",     g:"V3",gc:"gv3",portal:0,  crm:2,  to:0, ti:0,  cag:0,cat:0,cont:0},
+// ── DATA ──────────────────────────────────────────
+const DATA = [
+  // V1
+  {n:"Remedios Hernández",g:"V1",gc:"c1",col:"#1A73E8",portal:6,  crm:13,to:0, ti:0, cag:0,cat:0,firm:0,pago:0},
+  {n:"Víctor García",     g:"V1",gc:"c1",col:"#1A73E8",portal:18, crm:1, to:0, ti:3, cag:1,cat:1,firm:0,pago:0},
+  {n:"Arturo González",   g:"V1",gc:"c1",col:"#1A73E8",portal:8,  crm:1, to:0, ti:1, cag:0,cat:0,firm:0,pago:0},
+  {n:"Vanessa Arias",     g:"V1",gc:"c1",col:"#1A73E8",portal:12, crm:1, to:0, ti:1, cag:1,cat:0,firm:0,pago:0},
+  {n:"Alberto Cortés",    g:"V1",gc:"c1",col:"#1A73E8",portal:5,  crm:2, to:0, ti:0, cag:0,cat:0,firm:0,pago:0},
+  {n:"Roseyra Díaz",      g:"V1",gc:"c1",col:"#1A73E8",portal:9,  crm:0, to:0, ti:0, cag:0,cat:0,firm:0,pago:0},
+  {n:"Mauricio Escalante",g:"V1",gc:"c1",col:"#1A73E8",portal:6,  crm:0, to:0, ti:0, cag:0,cat:0,firm:0,pago:0},
+  {n:"Celia Martínez",    g:"V1",gc:"c1",col:"#1A73E8",portal:6,  crm:0, to:0, ti:0, cag:0,cat:0,firm:0,pago:0},
+  {n:"Orlando Palacios",  g:"V1",gc:"c1",col:"#1A73E8",portal:0,  crm:0, to:0, ti:0, cag:0,cat:0,firm:0,pago:0},
+  {n:"Astrid C. Medina",  g:"V1",gc:"c1",col:"#1A73E8",portal:0,  crm:1, to:0, ti:1, cag:0,cat:0,firm:0,pago:0},
+  {n:"Carlos Pacheco",    g:"V1",gc:"c1",col:"#1A73E8",portal:0,  crm:0, to:0, ti:0, cag:1,cat:0,firm:0,pago:0},
+  // V2
+  {n:"Yolanda Rojas",     g:"V2",gc:"c2",col:"#1E8E3E",portal:30, crm:11,to:0, ti:1, cag:0,cat:0,firm:0,pago:0},
+  {n:"Francisco Llorens", g:"V2",gc:"c2",col:"#1E8E3E",portal:11, crm:10,to:0, ti:0, cag:0,cat:0,firm:0,pago:0},
+  {n:"Néstor Portilla",   g:"V2",gc:"c2",col:"#1E8E3E",portal:16, crm:1, to:0, ti:1, cag:3,cat:2,firm:0,pago:0},
+  {n:"Valentina Salgado", g:"V2",gc:"c2",col:"#1E8E3E",portal:25, crm:3, to:1, ti:0, cag:0,cat:0,firm:0,pago:0},
+  {n:"Carmina Bolaños",   g:"V2",gc:"c2",col:"#1E8E3E",portal:17, crm:1, to:0, ti:0, cag:0,cat:0,firm:0,pago:0},
+  {n:"Omar Moreno",       g:"V2",gc:"c2",col:"#1E8E3E",portal:8,  crm:1, to:0, ti:1, cag:2,cat:0,firm:0,pago:0},
+  // V3
+  {n:"Michel Quintero",   g:"V3",gc:"c3",col:"#7B2FBE",portal:0,  crm:8, to:0, ti:7, cag:2,cat:2,firm:0,pago:0},
+  {n:"Alejandro Mojica",  g:"V3",gc:"c3",col:"#7B2FBE",portal:9,  crm:0, to:0, ti:0, cag:0,cat:0,firm:0,pago:0},
+  {n:"Samantha Lopez",    g:"V3",gc:"c3",col:"#7B2FBE",portal:11, crm:0, to:0, ti:0, cag:1,cat:1,firm:0,pago:0},
+  {n:"Paulette Magny",    g:"V3",gc:"c3",col:"#7B2FBE",portal:0,  crm:4, to:0, ti:0, cag:0,cat:0,firm:0,pago:0},
+  {n:"Daniel Guerra",     g:"V3",gc:"c3",col:"#7B2FBE",portal:0,  crm:0, to:0, ti:0, cag:1,cat:1,firm:0,pago:0},
+  {n:"José Lozano",       g:"V3",gc:"c3",col:"#7B2FBE",portal:0,  crm:0, to:0, ti:0, cag:1,cat:1,firm:0,pago:0},
+  {n:"Leonardo Furlong",  g:"V3",gc:"c3",col:"#7B2FBE",portal:2,  crm:1, to:0, ti:1, cag:0,cat:0,firm:0,pago:0},
+  {n:"Alonso Onofre",     g:"V3",gc:"c3",col:"#7B2FBE",portal:0,  crm:1, to:0, ti:0, cag:0,cat:0,firm:0,pago:0},
+  // V4
+  {n:"Andrés Medina",     g:"V4",gc:"c4",col:"#D56E0C",portal:2,  crm:2, to:0, ti:2, cag:0,cat:0,firm:0,pago:0},
+  {n:"Domingo Infante",   g:"V4",gc:"c4",col:"#D56E0C",portal:0,  crm:2, to:0, ti:1, cag:0,cat:0,firm:0,pago:0},
+  {n:"Laura Patricia",    g:"V4",gc:"c4",col:"#D56E0C",portal:0,  crm:1, to:0, ti:1, cag:0,cat:0,firm:0,pago:0},
 ];
-const MAX_P=50;
-const COLS={V1:'#52BEC0',V2:'#185FA5',V3:'#666',V4:'#BA7517'};
 
-function sv(v){
-  document.querySelectorAll('.view').forEach(x=>x.classList.remove('act'));
-  document.querySelectorAll('.btn').forEach(x=>x.classList.remove('act'));
-  document.getElementById('view-'+v).classList.add('act');
-  const map={gen:'General',v1:'Ventas 1',v2:'Ventas 2',v3:'Ventas 3',v4:'Ventas 4',ases:'Por Asesor'};
-  document.querySelectorAll('.btn').forEach(b=>{if(b.textContent.trim()===map[v])b.classList.add('act');});
-  document.getElementById('sel-a').style.display=v==='ases'?'block':'none';
-}
+const GC={V1:"#1A73E8",V2:"#1E8E3E",V3:"#7B2FBE",V4:"#D56E0C"};
+const GBD={V1:"bv1",V2:"bv2",V3:"bv3",V4:"bv4"};
+let selAs=[]; let curView='gen';
 
-function selA(nm){
-  const det=document.getElementById('ases-det');
-  if(!nm){det.style.display='none';return;}
-  const a=ASES.find(x=>x.n===nm);if(!a)return;
-  const pip=(a.crm||0)-(a.to||0)+(a.ti||0);
-  const cap=a.portal>0?((a.crm/a.portal)*100).toFixed(0)+'%':'—';
-  const conv=a.portal>0&&a.cag>0?((a.cag/a.portal)*100).toFixed(1)+'%':'—';
-  document.getElementById('ases-dtl').textContent='Funnel — '+nm+' ('+a.g+')';
-  document.getElementById('ases-fn').innerHTML=`
-    <div class="fs"><div class="fl">Leads del portal</div><div class="fv" style="color:${COLS[a.g]||'#aaa'}">${a.portal||'—'}</div><div class="fc fcn">base</div><span class="fa">›</span></div>
-    <div class="fs"><div class="fl">Leads CRM</div><div class="fv" style="color:var(--teal)">${a.crm||'—'}</div><div class="fc fct">${cap}</div><span class="fa">›</span></div>
-    <div class="fs"><div class="fl">Pipeline final</div><div class="fv" style="color:var(--teal)">${pip>0?pip:'—'}</div><div class="fc fcn">${a.ti>0?'+'+a.ti+' rec':''} ${a.to>0?'-'+a.to+' env':''}</div><span class="fa">›</span></div>
-    <div class="fs"><div class="fl">Citas agendadas</div><div class="fv" style="color:${a.cag>0?'#4ade80':'#252525'}">${a.cag||'—'}</div><div class="fc ${a.cag>0?'fct':'fcz'}">${a.portal>0&&a.cag>0?((a.cag/a.portal)*100).toFixed(1)+'%':'—'}</div><span class="fa">›</span></div>
-    <div class="fs"><div class="fl">Citas atendidas</div><div class="fv" style="color:${a.cat>0?'#4ade80':'#252525'}">${a.cat||'—'}</div><div class="fc ${a.cat>0?'fct':'fcz'}">${a.cag>0?((a.cat/a.cag)*100).toFixed(0)+'%':'—'}</div><span class="fa">›</span></div>
-    <div class="fs"><div class="fl">Contratos</div><div class="fv" style="color:#252525">0/0</div><div class="fc fcz">—</div></div>`;
-  det.style.display='block';
-}
+// ── HELPERS ──────────────────────────────────────
+const pip=a=>(a.crm||0)-(a.to||0)+(a.ti||0);
+const capN=a=>a.portal>0?(a.crm/a.portal*100):null;
+const capS=a=>a.portal>0?((a.crm/a.portal)*100).toFixed(0)+'%':'—';
+const asistS=a=>a.cag>0?((a.cat/a.cag)*100).toFixed(0)+'%':'—';
+const capTag=v=>v===null?`<span class="tag tneu">—</span>`:v>=70?`<span class="tag tg">${v.toFixed(0)}%</span>`:v>=40?`<span class="tag ta">${v.toFixed(0)}%</span>`:`<span class="tag tr2">${v.toFixed(0)}%</span>`;
 
-function renderBar(){
-  const el=document.getElementById('bar-gen');
-  const s=[...ASES].filter(a=>a.portal>0).sort((a,b)=>b.portal-a.portal);
-  el.innerHTML=s.map(a=>{
-    const pct=Math.round((a.portal/MAX_P)*100);
-    const c=COLS[a.g]||'#555';
-    const show=pct>18;
-    return`<div class="brow"><span class="bnm">${a.n}</span><div class="btr"><div class="bfl" style="width:${pct}%;background:${c}">${show?`<span class="bval">${a.portal}</span>`:''}</div>${!show?`<span class="bvout">${a.portal}</span>`:''}</div></div>`;
+function hbars(el,items,maxV,showTag=true){
+  if(!el)return;
+  const mx=maxV||Math.max(...items.map(i=>i.v||0),1);
+  el.innerHTML=items.map(item=>{
+    const pct=Math.round((item.v||0)/mx*100);
+    const si=pct>18;
+    return`<div class="hbr">
+      ${showTag?`<span class="hbtag" style="color:${item.col||'#999'}">${item.tag||''}</span>`:''}
+      <span class="hbl">${item.lbl}</span>
+      <div class="hbt"><div class="hbf" style="width:${pct}%;background:${item.col||'#ccc'}">
+        ${si?`<span class="hbv">${item.v}</span>`:''}
+      </div>${!si?`<span class="hbvo">${item.v}</span>`:''}</div>
+    </div>`;
   }).join('');
 }
 
-function renderTbl(){
-  const s=[...ASES].sort((a,b)=>(b.portal+b.ti)-(a.portal+a.ti));
-  document.getElementById('ases-tbody').innerHTML=s.map((a,i)=>{
-    const pip=(a.crm||0)-(a.to||0)+(a.ti||0);
-    const cap=a.portal>0?((a.crm/a.portal)*100).toFixed(0)+'%':'—';
-    const capC=a.portal>0?(a.crm/a.portal>=.85?'pg':a.crm/a.portal>=.5?'pm':'pr'):'pz';
-    const conv=a.portal>0&&a.cag>0?((a.cag/a.portal)*100).toFixed(1)+'%':'—';
-    const convC=a.cag>0?(parseFloat(conv)>=10?'pg':'pm'):'pz';
-    return`<tr>
-      <td style="color:#333;font-family:'DM Mono',monospace;font-size:10px">${i+1}</td>
-      <td class="an">${a.n}</td>
-      <td><span class="gb ${a.gc}">${a.g}</span></td>
-      <td class="nr">${a.portal||'—'}</td>
-      <td class="nr">${a.crm||'—'}</td>
-      <td class="nr"><span class="pi ${capC}">${cap}</span></td>
-      <td class="nr" style="color:${a.to>0?'#f87171':'#252525'}">${a.to>0?'-'+a.to:'—'}</td>
-      <td class="nr" style="color:${a.ti>0?'var(--teal)':'#252525'}">${a.ti>0?'+'+a.ti:'—'}</td>
-      <td class="nr" style="font-weight:600">${pip>0?pip:'—'}</td>
-      <td class="nr">${a.cag||'—'}</td>
-      <td class="nr">${a.cat||'—'}</td>
-      <td class="nr"><span class="pi ${convC}">${conv}</span></td>
-    </tr>`;
+function pbars(el,items){
+  if(!el)return;
+  el.innerHTML=items.map(i=>{
+    const vc=i.v>=70?'var(--green)':i.v>=40?'var(--amber)':'var(--red)';
+    return`<div class="pbr">
+      <div class="pbh"><span class="pbl" style="color:${i.col||'var(--g700)'}">${i.lbl}</span>
+        <span class="pbv" style="color:${vc}">${i.v.toFixed(1)}%</span></div>
+      <div class="pbt"><div class="pbf" style="width:${Math.min(i.v,100)}%;background:${i.col||'#ccc'}"></div></div>
+    </div>`;
   }).join('');
 }
 
-window.addEventListener('load', function(){
-  renderBar(); renderTbl(); renderGerBars();
-});
-
-function renderGerBars(){
-  const el = document.getElementById('ch-ger-bars');
-  if(!el) return;
-  const data = [
-    {g:'V1',color:'#52BEC0',portal:142,crm:104},
-    {g:'V2',color:'#185FA5',portal:205,crm:193},
-    {g:'V3',color:'#888',   portal:43, crm:29},
-    {g:'V4',color:'#BA7517',portal:26, crm:0},
-  ];
-  const max = 220;
-  el.innerHTML = data.map(d=>`
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-      <span style="width:22px;font-size:10px;font-weight:600;font-family:'DM Mono',monospace;color:${d.color}">${d.g}</span>
-      <div style="flex:1;display:flex;flex-direction:column;gap:3px;">
-        <div style="display:flex;align-items:center;gap:4px;">
-          <div style="flex:${d.portal};max-width:${Math.round(d.portal/max*100)}%;height:10px;background:${d.color};border-radius:3px;min-width:2px"></div>
-          <span style="font-size:9px;font-family:'DM Mono',monospace;color:${d.color}">${d.portal}</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:4px;">
-          <div style="flex:${d.crm};max-width:${Math.round(d.crm/max*100)}%;height:10px;background:rgba(255,255,255,0.15);border-radius:3px;${d.crm===0?'':'min-width:2px'}"></div>
-          <span style="font-size:9px;font-family:'DM Mono',monospace;color:rgba(255,255,255,0.35)">${d.crm}</span>
-        </div>
+function citasBars(el,items){
+  if(!el)return;
+  el.innerHTML=`<div style="font-size:9px;color:var(--g500);display:flex;gap:8px;margin-bottom:.6rem">
+    <span style="display:inline-block;width:8px;height:8px;background:var(--g200);border-radius:2px;vertical-align:middle"></span>Agendadas
+    <span style="display:inline-block;width:8px;height:8px;background:var(--green);border-radius:2px;vertical-align:middle;margin-left:6px"></span>Atendidas
+  </div>`+items.map(d=>`
+    <div style="margin-bottom:9px">
+      <div style="display:flex;justify-content:space-between;font-size:10px;font-weight:500;margin-bottom:3px">
+        <span style="color:${d.col}">${d.lbl}</span>
+        <span style="font-family:'DM Mono',monospace;color:var(--g500);font-size:9px">${d.ag} ag · ${d.at} at</span>
+      </div>
+      <div style="display:flex;gap:2px;height:10px">
+        <div style="flex:${d.ag||.05};background:${d.ag?'rgba(0,0,0,.1)':'transparent'};border-radius:2px"></div>
+        <div style="flex:${d.at||.05};background:${d.at?'var(--green)':'transparent'};border-radius:2px"></div>
+        <div style="flex:${Math.max(15-d.ag,.1)};background:transparent"></div>
       </div>
     </div>`).join('');
 }
 
-function renderCharts(){ /* replaced by CSS charts */ }
+// ── RENDER CHARTS ─────────────────────────────────
+function renderGlobalCharts(){
+  // Portal vs CRM grouped
+  const gc=document.getElementById('ch-ger');
+  if(gc){
+    const gers=[{g:'V1',col:'#1A73E8',p:118,c:19},{g:'V2',col:'#1E8E3E',p:137,c:27},{g:'V3',col:'#7B2FBE',p:54,c:14},{g:'V4',col:'#D56E0C',p:33,c:5}];
+    gc.innerHTML=`<div style="font-size:9px;color:var(--g500);display:flex;gap:8px;margin-bottom:.6rem">
+      <span style="width:8px;height:8px;border-radius:2px;display:inline-block;background:var(--v1);opacity:.5"></span>Portal
+      <span style="width:8px;height:8px;border-radius:2px;display:inline-block;background:var(--v2);margin-left:6px"></span>CRM
+    </div>`+gers.map(d=>`
+      <div style="margin-bottom:8px">
+        <div style="font-size:10px;font-weight:600;color:${d.col};margin-bottom:3px">${d.g}</div>
+        <div style="display:flex;gap:3px;height:14px;align-items:center">
+          <div style="flex:${d.p};max-width:${Math.round(d.p/140*100)}%;height:10px;background:${d.col};opacity:.35;border-radius:3px;min-width:3px"></div>
+          <span style="font-size:9px;font-family:'DM Mono',monospace;color:${d.col};opacity:.7">${d.p}</span>
+        </div>
+        <div style="display:flex;gap:3px;height:14px;align-items:center;margin-top:2px">
+          <div style="flex:${d.c};max-width:${Math.round(d.c/140*100)}%;height:10px;background:${d.col};border-radius:3px;min-width:${d.c>0?3:0}px"></div>
+          <span style="font-size:9px;font-family:'DM Mono',monospace;color:${d.col};font-weight:600">${d.c}</span>
+        </div>
+      </div>`).join('');
+  }
+
+  pbars(document.getElementById('ch-cap'),[
+    {lbl:'V2 — Ventas 2',v:19.7,col:'#1E8E3E'},
+    {lbl:'V1 — Ventas 1',v:16.1,col:'#1A73E8'},
+    {lbl:'V4 — Ventas 4',v:15.2,col:'#D56E0C'},
+    {lbl:'V3 — Ventas 3',v:25.9,col:'#7B2FBE'},
+  ]);
+
+  citasBars(document.getElementById('ch-citas'),[
+    {lbl:'V1',col:'#1A73E8',ag:4,at:3},
+    {lbl:'V2',col:'#1E8E3E',ag:5,at:2},
+    {lbl:'V3',col:'#7B2FBE',ag:4,at:3},
+    {lbl:'V4',col:'#D56E0C',ag:0,at:0},
+  ]);
+
+  // Traspasos
+  hbars(document.getElementById('ch-trasp'),[
+    {lbl:'→ Michel Quintero',v:7,col:'#7B2FBE',tag:''},
+    {lbl:'→ Yolanda Rojas',  v:1,col:'#1E8E3E',tag:''},
+    {lbl:'→ Omar Moreno',    v:1,col:'#1E8E3E',tag:''},
+    {lbl:'→ Andrés Medina',  v:2,col:'#D56E0C',tag:''},
+    {lbl:'→ Néstor Portilla',v:1,col:'#1E8E3E',tag:''},
+    {lbl:'→ Otros',          v:7,col:'#BDC1C6',tag:''},
+  ],10,false);
+
+  // Asesor portal bars
+  const ap=DATA.filter(a=>a.portal>0).sort((a,b)=>b.portal-a.portal);
+  hbars(document.getElementById('ch-asesor-portal'),ap.map(a=>({lbl:a.n,v:a.portal,col:a.col,tag:''})),null,false);
+}
+
+// ── RENDER TABLES ─────────────────────────────────
+function renderGlobalTable(){
+  const s=[...DATA].sort((a,b)=>(b.portal+b.ti+b.crm)-(a.portal+a.ti+a.crm));
+  document.getElementById('global-tbody').innerHTML=s.map((a,i)=>{
+    const p=pip(a); const cv=capN(a);
+    return`<tr>
+      <td style="color:var(--g400);font-size:9px;font-family:'DM Mono',monospace">${i+1}</td>
+      <td class="tn">${a.n}</td>
+      <td><span class="bdg ${GBD[a.g]}">${a.g}</span></td>
+      <td class="nr mn">${a.portal||'—'}</td>
+      <td class="nr mn">${a.crm||'—'}</td>
+      <td class="nr mn" style="color:${a.to>0?'var(--red)':'var(--g400)'}">${a.to>0?'−'+a.to:'—'}</td>
+      <td class="nr mn" style="color:${a.ti>0?GC[a.g]:'var(--g400)'}">${a.ti>0?'+'+a.ti:'—'}</td>
+      <td class="nr mn" style="font-weight:600">${p>0?p:'—'}</td>
+      <td class="nr mn">${a.cag||'—'}</td>
+      <td class="nr mn">${a.cat||'—'}</td>
+      <td class="nr mn" style="color:var(--g400)">0</td>
+      <td class="nr mn" style="color:var(--g400)">0</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderGerTbody(id, ger, cols){
+  const as=DATA.filter(a=>a.g===ger).sort((a,b)=>(b.portal+b.crm+b.ti)-(a.portal+a.crm+a.ti));
+  const col=GC[ger]; const bd=GBD[ger];
+  let tot={portal:0,crm:0,to:0,ti:0,cag:0,cat:0};
+  as.forEach(a=>{tot.portal+=a.portal;tot.crm+=a.crm;tot.to+=a.to;tot.ti+=a.ti;tot.cag+=a.cag;tot.cat+=a.cat;});
+  const tpip=tot.crm-tot.to+tot.ti;
+  const rows=as.map(a=>{
+    const p=pip(a); const cv=capN(a);
+    if(cols==='v1')return`<tr><td class="tn">${a.n}</td><td class="nr mn">${a.portal||'—'}</td><td class="nr mn">${a.crm||'—'}</td><td class="nr">${capTag(cv)}</td><td class="nr mn" style="color:${a.to>0?'var(--red)':'var(--g400)'}">${a.to>0?'−'+a.to:'—'}</td><td class="nr mn" style="color:${a.ti>0?col:'var(--g400)'}">${a.ti>0?'+'+a.ti:'—'}</td><td class="nr mn">${p>0?p:'—'}</td><td class="nr mn">${a.cag||'—'}</td><td class="nr mn">${a.cat||'—'}</td><td class="nr mn" style="color:var(--g400)">0</td></tr>`;
+    if(cols==='v2')return`<tr><td class="tn">${a.n}</td><td class="nr mn">${a.portal||'—'}</td><td class="nr mn">${a.crm||'—'}</td><td class="nr mn" style="color:${a.to>0?'var(--red)':'var(--g400)'}">${a.to>0?'−'+a.to:'—'}</td><td class="nr mn" style="color:${a.ti>0?col:'var(--g400)'}">${a.ti>0?'+'+a.ti:'—'}</td><td class="nr mn">${p>0?p:'—'}</td><td class="nr mn">${a.cag||'—'}</td><td class="nr mn">${a.cat||'—'}</td><td class="nr mn" style="color:var(--g400)">0</td></tr>`;
+    return`<tr><td class="tn">${a.n}</td><td class="nr mn">${a.portal||'—'}</td><td class="nr mn">${a.crm||'—'}</td><td class="nr mn" style="color:${a.ti>0?col:'var(--g400)'}">${a.ti>0?'+'+a.ti:'—'}</td><td class="nr mn">${p>0?p:'—'}</td><td class="nr mn">${a.cag||'—'}</td><td class="nr mn">${a.cat||'—'}</td><td class="nr mn" style="color:var(--g400)">0</td></tr>`;
+  });
+  const subrow=cols==='v1'?
+    `<tr class="sub"><td style="color:${col}">TOTAL ${ger}</td><td class="nr mn" style="color:${col}">${tot.portal}</td><td class="nr mn">${tot.crm}</td><td class="nr">—</td><td class="nr mn" style="color:var(--red)">${tot.to>0?'−'+tot.to:'—'}</td><td class="nr mn" style="color:${col}">${tot.ti>0?'+'+tot.ti:'—'}</td><td class="nr mn" style="color:${col}">${tpip}</td><td class="nr mn" style="color:var(--v2)">${tot.cag}</td><td class="nr mn" style="color:var(--v2)">${tot.cat}</td><td class="nr mn" style="color:var(--g400)">0</td></tr>`:
+    cols==='v2'?
+    `<tr class="sub"><td style="color:${col}">TOTAL ${ger}</td><td class="nr mn" style="color:${col}">${tot.portal}</td><td class="nr mn">${tot.crm}</td><td class="nr mn" style="color:var(--red)">${tot.to>0?'−'+tot.to:'—'}</td><td class="nr mn" style="color:${col}">${tot.ti>0?'+'+tot.ti:'—'}</td><td class="nr mn" style="color:${col}">${tpip}</td><td class="nr mn" style="color:var(--v2)">${tot.cag}</td><td class="nr mn" style="color:var(--v2)">${tot.cat}</td><td class="nr mn" style="color:var(--g400)">0</td></tr>`:
+    `<tr class="sub"><td style="color:${col}">TOTAL ${ger}</td><td class="nr mn" style="color:${col}">${tot.portal||'—'}</td><td class="nr mn">${tot.crm}</td><td class="nr mn" style="color:${col}">${tot.ti>0?'+'+tot.ti:'—'}</td><td class="nr mn" style="color:${col}">${tpip}</td><td class="nr mn" style="color:var(--v2)">${tot.cag}</td><td class="nr mn" style="color:var(--v2)">${tot.cat}</td><td class="nr mn" style="color:var(--g400)">0</td></tr>`;
+  document.getElementById(id).innerHTML=rows.join('')+subrow;
+}
+
+// ── COMPARE VIEW ──────────────────────────────────
+function renderCompare(){
+  const sel=DATA.filter(a=>selAs.includes(a.n));
+  if(sel.length<2)return;
+  document.getElementById('cmp-title').textContent=sel.map(a=>a.n).join(' vs ');
+  const ckpis=document.getElementById('cmp-kpis');
+  ckpis.innerHTML=sel.map(a=>`
+    <div class="kc" style="border-top:3px solid ${a.col}">
+      <div class="kl" style="color:${a.col}">${a.n} <span class="bdg ${a.gc==='c1'?'bv1':a.gc==='c2'?'bv2':a.gc==='c3'?'bv3':'bv4'}" style="margin-left:4px">${a.g}</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:8px">
+        <div><div style="font-size:8px;color:var(--g500)">Portal</div><div style="font-size:16px;font-weight:700;font-family:'DM Mono',monospace;color:${a.col}">${a.portal||'—'}</div></div>
+        <div><div style="font-size:8px;color:var(--g500)">CRM</div><div style="font-size:16px;font-weight:700;font-family:'DM Mono',monospace">${a.crm||'—'}</div></div>
+        <div><div style="font-size:8px;color:var(--g500)">Pipeline</div><div style="font-size:16px;font-weight:700;font-family:'DM Mono',monospace;color:${a.col}">${pip(a)||'—'}</div></div>
+        <div><div style="font-size:8px;color:var(--g500)">Citas ag.</div><div style="font-size:16px;font-weight:700;font-family:'DM Mono',monospace;color:var(--green)">${a.cag||'—'}</div></div>
+      </div>
+    </div>`).join('');
+  hbars(document.getElementById('cmp-portal'),sel.map(a=>({lbl:a.n,v:a.portal,col:a.col,tag:''})),null,false);
+  hbars(document.getElementById('cmp-crm'),sel.map(a=>({lbl:a.n,v:a.crm,col:a.col,tag:''})),null,false);
+  hbars(document.getElementById('cmp-pipeline'),sel.map(a=>({lbl:a.n,v:pip(a),col:a.col,tag:''})),null,false);
+  citasBars(document.getElementById('cmp-citas'),sel.map(a=>({lbl:a.n,col:a.col,ag:a.cag,at:a.cat})));
+}
+
+// ── FUNNEL DATA ───────────────────────────────────
+const CONV={
+  gen:{label:'General',badge:'GENERAL',col:'#52BEC0',
+    portal_exp:186788,portal_vis:11705,portal_int:342,
+    crm:66,seguimiento:55,citas_ag:13,citas_at:8,firmados:0,pagados:0},
+  v1:{label:'Ventas 1',badge:'V1',col:'#1A73E8',
+    portal_exp:73975,portal_vis:4958,portal_int:118,
+    crm:19,seguimiento:16,citas_ag:4,citas_at:3,firmados:0,pagados:0},
+  v2:{label:'Ventas 2',badge:'V2',col:'#1E8E3E',
+    portal_exp:70351,portal_vis:4642,portal_int:137,
+    crm:27,seguimiento:24,citas_ag:5,citas_at:2,firmados:0,pagados:0},
+  v3:{label:'Ventas 3',badge:'V3',col:'#7B2FBE',
+    portal_exp:23026,portal_vis:1339,portal_int:54,
+    crm:14,seguimiento:12,citas_ag:4,citas_at:3,firmados:0,pagados:0},
+  v4:{label:'Ventas 4',badge:'V4',col:'#D56E0C',
+    portal_exp:19436,portal_vis:766,portal_int:33,
+    crm:5,seguimiento:4,citas_ag:0,citas_at:0,firmados:0,pagados:0},
+};
+
+function p(n,d){return d>0?n/d*100:0;}
+function fmtp(v){return v>0?v.toFixed(1)+'%':'—';}
+function rc(v){return v>=60?'#1E8E3E':v>=30?'#F29900':'#D93025';}
+
+// ── FUNNEL CHART ─────────────────────────────────
+function renderFunnel(key){
+  const d=CONV[key]; if(!d) return;
+
+  // update badge
+  const bdg=document.getElementById('funnel-badge');
+  bdg.textContent=d.badge; bdg.style.color=d.col;
+  bdg.style.background=d.col+'15'; bdg.style.borderColor=d.col+'35';
+
+  // build steps — each step has: label, absolute value, % relative to previous step, color, group
+  const MAX=d.portal_exp;
+  const steps=[
+    {lbl:'Exposición',    val:d.portal_exp, prev:d.portal_exp, col:'#52BEC0', grp:'portal'},
+    {lbl:'Visualizaciones',val:d.portal_vis, prev:d.portal_exp, col:'#3DADB0', grp:'portal'},
+    {lbl:'Interesados',   val:d.portal_int, prev:d.portal_vis, col:'#1A73E8', grp:'portal'},
+    {lbl:'CRM',           val:d.crm,        prev:d.portal_int, col:'#1558B0', grp:'crm'},
+    {lbl:'Seguimiento',   val:d.seguimiento,prev:d.crm,        col:'#7B2FBE', grp:'crm'},
+    {lbl:'Citas ag.',     val:d.citas_ag,   prev:d.crm,        col:'#1E8E3E', grp:'citas'},
+    {lbl:'Citas at.',     val:d.citas_at,   prev:d.citas_ag,   col:'#137333', grp:'citas'},
+    {lbl:'Firmados',      val:d.firmados,   prev:d.citas_at,   col:'#E37400', grp:'contrato'},
+    {lbl:'Pagados',       val:d.pagados,    prev:d.firmados,   col:'#B06000', grp:'contrato'},
+  ];
+
+  // find max bar width for scaling (use portal_exp as 100%)
+  // but compress large numbers: we use sqrt scaling for big gap between portal and crm
+  const dispMax=d.portal_exp;
+
+  const el=document.getElementById('funnel-chart');
+  const tip=document.getElementById('funnel-tooltip');
+
+  el.innerHTML=steps.map((s,i)=>{
+    // width as % of MAX, but with a minimum so CRM numbers show
+    const rawPct=dispMax>0?s.val/dispMax*100:0;
+    // apply sqrt compression so CRM/citas bars are still visible against huge exposure
+    const scaledW=dispMax>0?Math.max(Math.sqrt(s.val/dispMax)*100, s.val>0?3:0):0;
+    const stepPct=fmtp(p(s.val,s.prev));
+    const cumPct=fmtp(p(s.val,d.portal_exp));
+    const numFmt=s.val>=1000?(s.val/1000).toFixed(1)+'k':s.val;
+
+    return `<div class="fbar-row" data-tip="${s.lbl}: ${s.val>=1000?s.val.toLocaleString():s.val} | vs anterior: ${stepPct} | vs exposición: ${cumPct}"
+      onmouseenter="showTip(event,this)" onmouseleave="hideTip()"
+      style="display:flex;align-items:center;gap:8px;cursor:default;">
+      <div style="width:90px;font-size:9px;color:var(--g600);text-align:right;flex-shrink:0;
+        white-space:nowrap;font-weight:${i===0?'700':'500'}">${s.lbl}</div>
+      <div style="flex:1;background:var(--g100);border-radius:3px;height:16px;position:relative;overflow:hidden;">
+        <div style="height:100%;width:${scaledW}%;background:${s.col};border-radius:3px;
+          transition:width .5s ease;display:flex;align-items:center;padding-left:6px;">
+          ${scaledW>20?`<span style="font-size:9px;font-family:'DM Mono',monospace;font-weight:600;color:rgba(255,255,255,.9)">${numFmt}</span>`:''}
+        </div>
+        ${scaledW<=20&&s.val>0?`<span style="position:absolute;left:${scaledW+2}%;top:50%;transform:translateY(-50%);
+          font-size:9px;font-family:'DM Mono',monospace;font-weight:600;color:var(--g600)">${numFmt}</span>`:''}
+        ${s.val===0?`<span style="position:absolute;left:4px;top:50%;transform:translateY(-50%);
+          font-size:9px;font-family:'DM Mono',monospace;color:var(--g400)">0</span>`:''}
+      </div>
+      <div style="width:38px;font-size:9px;font-family:'DM Mono',monospace;font-weight:700;
+        color:${s.val===0?'var(--g400)':rc(p(s.val,s.prev))};text-align:right;flex-shrink:0;">
+        ${stepPct}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function showTip(e,el){
+  const tip=document.getElementById('funnel-tooltip');
+  tip.textContent=el.dataset.tip;
+  tip.style.display='block';
+  tip.style.left=(e.clientX+12)+'px';
+  tip.style.top=(e.clientY-28)+'px';
+}
+function hideTip(){
+  document.getElementById('funnel-tooltip').style.display='none';
+}
+document.addEventListener('mousemove',e=>{
+  const tip=document.getElementById('funnel-tooltip');
+  if(tip.style.display==='block'){tip.style.left=(e.clientX+12)+'px';tip.style.top=(e.clientY-28)+'px';}
+});
+
+// ── VIEW SWITCHING ─────────────────────────────────
+function sv(v,btn){
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.np').forEach(x=>x.classList.remove('on'));
+  document.getElementById('view-'+v).classList.add('on');
+  if(btn)btn.classList.add('on');
+  curView=v; selAs=[]; renderChips();
+  renderFunnel(v);
+}
+
+// ── CHIPS ──────────────────────────────────────────
+function renderChips(){
+  const container = document.getElementById('chips');
+  const btn = document.getElementById('desel-btn');
+  btn.style.display = selAs.length > 0 ? 'block' : 'none';
+
+  const gers = [
+    {key:'V1', label:'Ventas 1', col:'#1A73E8', cls:'c1'},
+    {key:'V2', label:'Ventas 2', col:'#1E8E3E', cls:'c2'},
+    {key:'V3', label:'Ventas 3', col:'#7B2FBE', cls:'c3'},
+    {key:'V4', label:'Ventas 4', col:'#D56E0C', cls:'c4'},
+  ];
+
+  container.innerHTML = gers.map(g => {
+    const asesores = DATA.filter(a => a.g === g.key)
+      .sort((a,b) => (b.portal+b.crm) - (a.portal+a.crm));
+    return `
+      <div style="display:flex;align-items:center;gap:5px;margin-bottom:5px;flex-wrap:wrap;">
+        <span style="font-size:8px;font-weight:700;color:${g.col};letter-spacing:.5px;
+          text-transform:uppercase;width:52px;flex-shrink:0;">${g.label}</span>
+        <div style="width:1px;height:12px;background:${g.col}30;flex-shrink:0;"></div>
+        ${asesores.map(a => `
+          <button class="chip ${g.cls} ${selAs.includes(a.n)?'on':''}"
+            onclick="toggleAs('${a.n.replace(/'/g,"\\'")}')">${a.n}</button>
+        `).join('')}
+      </div>`;
+  }).join('');
+}
+
+function deselAll(){
+  selAs = [];
+  renderChips();
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));
+  document.getElementById('view-'+curView).classList.add('on');
+  renderFunnel(curView);
+}
+
+function toggleAs(n){
+  const i=selAs.indexOf(n);
+  if(i>-1)selAs.splice(i,1);else selAs.push(n);
+  renderChips();
+  if(selAs.length>=2){
+    document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));
+    document.getElementById('view-compare').classList.add('on');
+    renderCompare();
+  } else if(selAs.length===0){
+    document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));
+    document.getElementById('view-'+curView).classList.add('on');
+  }
+}
+
+function toggleSpec(){
+  document.getElementById('spec-panel').classList.toggle('open');
+}
+
+// ── INIT ──────────────────────────────────────────
+window.addEventListener('load',()=>{
+  renderFunnel('gen');
+  renderGlobalCharts();
+  renderGlobalTable();
+  renderGerTbody('v1-tbody','V1','v1');
+  renderGerTbody('v2-tbody','V2','v2');
+  renderGerTbody('v3-tbody','V3','v3');
+  renderChips();
+});
 </script>
 </body>
 </html>
